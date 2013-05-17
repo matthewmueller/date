@@ -223,6 +223,13 @@ describe('parse', function () {
       assert('5/14/13' == d(date));
     });
 
+    it('tomorrow night at 9', function () {
+      var date = parse('tomorrow night at 9', mon);
+      console.log(t(date));
+      assert('21:00:00' == t(date));
+      assert('5/14/13' == d(date));
+    });
+
     it('last night', function () {
       var date = parse('last night', mon);
       assert('17:00:00' == t(date));
