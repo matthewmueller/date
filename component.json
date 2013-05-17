@@ -1,13 +1,12 @@
 {
   "name": "date",
   "repo": "matthewmueller/date",
-  "description": "parse human-readable dates",
+  "description": "dates for humans",
   "version": "0.0.1",
-  "keywords": [],
+  "keywords": ["date", "parsing", "human"],
   "dependencies": {
     "visionmedia/debug": "*"
   },
-  "license": "MIT",
   "main": "index.js",
   "scripts": [
     "index.js",

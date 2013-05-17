@@ -35,6 +35,18 @@ describe('parse', function () {
       assert('1:40:00' == t(date));
       assert('5/13/13' == d(date));
     });
+
+    it('10 minutes from now', function () {
+      var date = parse('10 minutes from now', mon);
+      assert('1:40:00' == t(date));
+      assert('5/13/13' == d(date));
+    });
+
+    it('10 minutes starting tomorrow', function () {
+      var date = parse('10 minutes starting tomorrow', mon);
+      assert('1:40:00' == t(date));
+      assert('5/14/13' == d(date));
+    });
   });
 
   describe('hours', function() {
@@ -225,7 +237,6 @@ describe('parse', function () {
 
     it('tomorrow night at 9', function () {
       var date = parse('tomorrow night at 9', mon);
-      console.log(t(date));
       assert('21:00:00' == t(date));
       assert('5/14/13' == d(date));
     });

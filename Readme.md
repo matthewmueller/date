@@ -1,16 +1,15 @@
 
 # date
 
-  parse human-readable dates
+  dates for humans.
 
 ## Installation
 
     $ component install matthewmueller/date
 
-## API
+## Examples
 
-   
+```
+date('')
+```
 
-## License
-
-  MIT
