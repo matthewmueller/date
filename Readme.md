@@ -30,9 +30,6 @@ date('tomorrow night at 9')
 date('tomorrow afternoon')
 date('this morning at 9')
 date('2 years from yesterday at 5pm')
+date('last month')
+date('tomorrow afternoon at 4:30pm 1 month from now')
 ```
-
-## TODO
-
-* months
-* edge cases (leap year)

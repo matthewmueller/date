@@ -384,6 +384,12 @@ describe('months', function () {
     var date = parse('1 month', new Date('01/31/2012'));
     assert('2/29/12' == d(date));
   });
+
+  it('tomorrow afternoon at 4:30pm 1 month from now', function () {
+    var date = parse('tomorrow afternoon at 4:30pm 1 month from now', mon);
+    assert('16:30:00' == t(date));
+    assert('6/14/13' == d(date));
+  });
 });
 
 /**
