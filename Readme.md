@@ -1,7 +1,7 @@
 
 # date
 
-Date is an english language date parser for node.js and the browser.
+Date is an english language date parser for node.js and the browser. For examples and a demo, see:
 
 ## Installation
 
