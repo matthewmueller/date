@@ -7,4 +7,4 @@ components: component.json
 clean:
 	rm -fr build components template.js
 
-.PHONY: test clean
+.PHONY: build test clean

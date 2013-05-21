@@ -514,7 +514,7 @@ function parser(str, offset) {
   var d = offset || new Date;
   this.date = new date(d);
   this.original = str;
-  this.str = str;
+  this.str = str.toLowerCase();
   this.stash = [];
   this.tokens = [];
   while (this.advance() !== 'eos');
@@ -552,7 +552,8 @@ parser.prototype.advance = function() {
     || this.hour()
     || this.day()
     || this.number()
-    || this.string();
+    || this.string()
+    || this.other();
 
   this.tokens.push(tok);
   return tok;
@@ -1004,6 +1005,18 @@ parser.prototype.string = function() {
   if (captures = /^\w+/.exec(this.str)) {
     this.skip(captures);
     return 'string';
+  }
+};
+
+/**
+ * Other
+ */
+
+parser.prototype.other = function() {
+  var captures;
+  if (captures = /^./.exec(this.str)) {
+    this.skip(captures);
+    return 'other';
   }
 };
 
