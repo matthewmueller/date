@@ -17,6 +17,11 @@ Date is an english language date parser for node.js and the browser. For example
 
 #### Standalone:
 
+* development: [date.js](https://raw.github.com/MatthewMueller/date/master/dist/date.min.js?login=MatthewMueller&token=0cdabf0b525b6aab13cb2b9d4df1daa0)
+* minified: [date.min.js](https://raw.github.com/MatthewMueller/date/master/dist/date.min.js?login=MatthewMueller&token=0cdabf0b525b6aab13cb2b9d4df1daa0)
+
+> Standalone is also AMD-compatible
+
 ## Examples
 
 ```js
