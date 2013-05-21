@@ -420,8 +420,47 @@ describe('year', function() {
     assert('17:00:00' == t(date));
     assert('5/12/15' == d(date));
   });
+
+  it('2 years ago', function() {
+    var date = parse('2 years ago', mon);
+    assert('1:30:00' == t(date));
+    assert('5/13/11' == d(date));
+  })
+
+  it('2 years ago tomorrow', function() {
+    var date = parse('2 years ago tomorrow', mon);
+    assert('1:30:00' == t(date));
+    assert('5/14/11' == d(date));
+  })
 });
 
+/**
+ * Dates in the past
+ */
+
+describe('dates in the past', function() {
+  var past = new Date('May 13, 2013 18:00:00')
+
+  it('tomorrow afternoon', function() {
+    var date = parse('tomorrow afternoon', past);
+    assert('14:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  it('tomorrow afternoon at 3pm', function() {
+    var date = parse('tomorrow afternoon at 3pm', past);
+    assert('15:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  // Need to place .nextTime() at the end
+
+  it('3pm tomorrow afternoon', function () {
+    var date = parse('3pm tomorrow afternoon', past);
+    assert('15:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+});
 
 /**
  * Time helper function
