@@ -463,6 +463,18 @@ describe('dates in the past', function() {
 });
 
 /**
+ * Ignore other input
+ */
+
+describe('other inputs', function () {
+  it('yesterday, 2 years ago--.', function() {
+    var date = parse('yesterday, 2 years ago--.', mon);
+    assert('1:30:00' == t(date));
+    assert('5/12/11' == d(date))
+  });
+});
+
+/**
  * Time helper function
  */
 
