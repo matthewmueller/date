@@ -128,6 +128,12 @@ describe('dates', function () {
     assert('5/13/13' == d(date));
   });
 
+  it('Monday at 9am', function () {
+    var date = parse('Monday at 9am', mon);
+    assert('9:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
   it('monday at 1:00am', function () {
     var date = parse('monday at 1:00am', mon);
     assert('1:00:00' == t(date));
