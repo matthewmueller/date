@@ -2,7 +2,7 @@
   "name": "date",
   "repo": "matthewmueller/date",
   "description": "dates for humans",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": ["date", "parsing", "human"],
   "dependencies": {
     "visionmedia/debug": "*"
