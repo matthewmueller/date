@@ -1,11 +1,21 @@
 
 # date
 
-  dates for humans.
+Date is an english language date parser for node.js and the browser.
 
 ## Installation
 
-    $ component install matthewmueller/date
+### On the server (node.js):
+
+    npm install date.js
+
+### In the browser:
+
+#### Using component:
+
+    component install matthewmueller/date
+
+#### Standalone:
 
 ## Examples
 
@@ -33,3 +43,16 @@ date('2 years from yesterday at 5pm')
 date('last month')
 date('tomorrow afternoon at 4:30pm 1 month from now')
 ```
+
+## API
+
+### date(str, [offset])
+
+Create a `Date` from a `str`. You may also supply an optional `offset` to the starting date. `offset` defaults to the current date and time.
+
+## Tests
+
+To run the tests, you'll need node.js:
+
+    npm install
+    make test
