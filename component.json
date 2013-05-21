@@ -1,0 +1,21 @@
+{
+  "name": "date.com",
+  "description": "date website",
+  "main": "date.js",
+  "scripts": [
+    "date.js"
+  ],
+  "styles": [
+    "css/base.css",
+    "css/layout.css",
+    "css/calendar.css"
+  ],
+  "dependencies": {
+    "matthewmueller/date": "*",
+    "matthewmueller/clock": "*",
+    "component/calendar": "*",
+    "component/event": "*",
+    "matthewmueller/debounce": "*",
+    "visionmedia/debug": "*"
+  }
+}

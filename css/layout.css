@@ -1,0 +1,184 @@
+#nav {
+  height: 50px;
+  background: #333;
+  color: #eee;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  text-shadow: 1px 1px 0px #000;
+}
+
+#nav h1 {
+  float: left;
+  margin: 0 7px 0 10px;
+  line-height: 50px;
+  font-weight: 700;
+}
+
+#nav small {
+  float: left;
+  font-size: 18px;
+  font-weight: 300;
+  margin-top:19px;
+}
+
+#nav .nav-clock {
+  float: right;
+  height: 50px;
+  width: 50px;
+  padding: 0 6px;
+}
+
+#nav .nav-clock .bg {
+  fill: #eee
+}
+
+#menu {
+  float: right;
+}
+
+#menu h2 {
+  display: inline-block;
+  margin: 0 10px;
+  line-height: 50px;
+  font-size: 24px;
+}
+
+#menu h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#wrapper {
+  width: 800px;
+  margin: 30px auto;
+  padding-bottom: 10px;
+}
+
+#installation, #tests {
+  background: #fafafa;
+  margin-left: -25px;
+  width: 850px;
+  padding: 20px 25px;
+  margin-top: 1.1em;
+  border: 1px solid #eee;
+}
+
+#installation h2,
+#tests h2 {
+  margin: 0;
+}
+
+/**
+ * Demo
+ */
+
+#demo {
+  display: block;
+  width: 800px;
+  height: 312px;
+}
+
+#demo .left {
+  width: 500px;
+  float: left;
+}
+
+#demo .right {
+  width: 300px;
+  float: right;
+}
+
+#demo label {
+  font-size: 20px;
+  padding: 10px 0;
+  display: block;
+}
+
+#demo input {
+  font-size: 20px;
+  border: 1px solid #E3E3E3;
+  height: 45px;
+  padding: 0 10px;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 300;
+}
+
+/**
+ * Suggestions
+ */
+
+#demo .suggestions {
+  margin-top: 20px;
+  height: 200px;
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+#demo .suggestions table {
+  padding: 10px;
+  width: 100%;
+}
+
+#demo .suggestions td {
+  cursor: pointer;
+  padding: 6px;
+}
+
+#demo .suggestions:before {
+  content: '\00a0';
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  position: absolute;
+  margin-left: -10px;
+  top: -9px;
+  left: 50%;
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+
+
+#demo .calendar-container,
+#demo .time {
+  width: 280px;
+  float: right;
+  border: 1px solid #eee;
+  margin: 5px;
+  padding: 5px;
+}
+
+#demo .calendar-container {
+  height: 220px;
+}
+
+#demo .time {
+  height: 75px;
+  padding-top: 7px;
+  font-size: 45px;
+  font-weight: 300;
+  text-align: center;
+}
+
+#install {
+  clear: both;
+}
+
+#footer {
+  border-top: 1px solid black;
+  background: #333;
+  padding: 20px;
+  color: #eee;
+  font-weight: 300;
+  text-shadow: 1px 1px 0 #000;
+  text-align: right;
+}

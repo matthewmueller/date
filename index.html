@@ -1,0 +1,99 @@
+<html>
+<head>
+  <title>date</title>
+  <link rel="stylesheet" href="../build/build.css">
+</head>
+<body>
+  <div id="nav">
+    <h1>date</h1>
+    <small>for humans</small>
+    <div class="nav-clock"></div>
+    <div id="menu">
+      <h2><a href="http://github.com/matthewmueller/date">Github</a></h2>
+      <h2><a href="https://github.com/matthewmueller/date/issues">Issues</a></h2>
+    </div>
+  </div>
+
+  <div id="wrapper">
+    <div id="demo">
+      <div class="left">
+        <label for="date-input">Write a date like a human:</label>
+        <input id="date-input" type="text" placeholder="next sunday morning at 10am">
+        <div class="suggestions">
+          <table>
+            <tr>
+              <td>10 minutes from now</td>
+              <td>in 3 hours</td>
+            </tr>
+            <tr>
+              <td>at 12:30pm</td>
+              <td>tomorrow night at 5</td>
+            </tr>
+            <tr>
+              <td>sunday night</td>
+              <td>next week wednesday</td>
+            </tr>
+            <tr>
+              <td>last month</td>
+              <td>in 2 months</td>
+            </tr>
+            <tr>
+              <td>friday at 2pm</td>
+              <td>next week saturday morning</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="right">
+        <div class="calendar-container"></div>
+        <div class="time"></div>
+      </div>
+    </div>
+
+    <div id="installation">
+      <h2>Installation</h2>
+
+      <h3>On the server using node.js:</h3>
+
+      <pre><code>  npm install date.js</code></pre>
+
+      <h3>In the browser using component:</h3>
+
+      <pre><code>  component install matthewmueller/date</code></pre>
+
+      <h3>In the browser (standalone):</h3>
+
+    </div>
+
+    <div id="api">
+      <h2>API</h2>
+
+      <h3><pre>date(str, [offset])</pre></h3>
+
+      <p>Create a <code>Date</code> from a <code>str</code>. You may also supply an optional <code>offset</code> to the starting date. <code>offset</code> defaults to the current date and time (ie. <code>new Date</code>).</p>
+    </div>
+
+    <div id="tests">
+      <h2>Tests</h2>
+
+      <p>To run the tests, you'll need node.js:</p>
+
+      <pre><code>  npm install
+  make test</code></pre>
+    </div>
+
+    <div id="license">
+      <h2>License</h2>
+      <h3>MIT<small>, go wild.</small></h3>
+    </div>
+  </div>
+
+  <div id="footer">
+    date was created by <a href="http://github.com/matthewmueller">Matthew Mueller</a>
+  </div>
+
+  <script src="../build/build.js" type="text/javascript"></script>
+  <script>require('date.com')</script>
+</body>
+</html>

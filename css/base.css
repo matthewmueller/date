@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+/**
+ * Headers
+ */
+
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.1em;
+}
+
+h2, h3, h4, h5 {
+  font-weight: 300;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: .5em;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+/**
+ * Paragraph
+ */
+
+h1 + p {
+  font-size: 1.2em;
+  line-height: 1.4em;
+}
+
+p {
+  line-height: 1.5em;
+  color: #444;
+  margin-bottom: 1.5em;
+}
+
+p > code {
+  padding: 2px 5px;
+  background: #eee;
+}
+
+hr {
+  height: 1px;
+  background: #eee;
+  border:none;
+  margin: 10px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
