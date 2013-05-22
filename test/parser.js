@@ -208,6 +208,31 @@ describe('tonight', function () {
 });
 
 /**
+ * Midnight
+ */
+describe('mightnight', function () {
+  it('midnight', function () {
+    var date = parse('midnight', mon);
+
+    assert('0:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  it('tomorrow at midnight', function () {
+    var date = parse('tomorrow at midnight', mon);
+    assert('0:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  it('midnight (@ 1:30pm)', function () {
+    var afternoon = new Date('May 13, 2013 13:30:00')
+    var date = parse('midnight', afternoon);
+    assert('0:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+});
+
+/**
  * Noon
  */
 
