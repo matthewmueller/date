@@ -390,7 +390,7 @@ date.prototype.year = function(n) {
  * @return {date}
  */
 
-date.prototype.time = function(h, m, s) {
+date.prototype.time = function(h, m, s, meridiem) {
   if (h === false) {
     h = this.date.getHours();
   } else {
@@ -493,7 +493,7 @@ var rMeridiem = /^(\d{1,2})(:(\d{1,2}))?([:.](\d{1,2}))?\s*([ap]m)/;
 var rHourMinute = /^(\d{1,2})(:(\d{1,2}))([:.](\d{1,2}))?/;
 var rDays = /\b(sun(day)?|mon(day)?|tues(day)?|wed(nesday)?|thur(sday|s)?|fri(day)?|sat(urday)?)s?\b/
 var rPast = /\b(last|yesterday|ago)\b/
-var rDayMod = /\b(morning|noon|afternoon|night|evening)\b/
+var rDayMod = /\b(morning|noon|afternoon|night|evening|midnight)\b/
 
 /**
  * Expose `parser`
@@ -538,6 +538,7 @@ parser.prototype.advance = function() {
     || this.yesterday()
     || this.tomorrow()
     || this.noon()
+    || this.midnight()
     || this.night()
     || this.afternoon()
     || this.morning()
@@ -779,8 +780,8 @@ parser.prototype.time = function(h, m, s, meridiem) {
 
   if (meridiem) {
     // convert to 24 hour
-    h = ('pm' == meridiem) ? +h + 12 : h; // 6pm => 18
-    h = (12 == h && 'am' == meridiem) ? 0 : h; // 12am => 0
+    h = ('pm' == meridiem && 12 > h) ? +h + 12 : h; // 6pm => 18
+    h = ('am' == meridiem && 12 == h) ? 0 : h; // 12am => 0
   }
 
   m = (!m && d.changed('minutes')) ? false : m;
@@ -844,6 +845,20 @@ parser.prototype.noon = function() {
     var before = this.date.clone();
     this.date.date.setHours(12, 0, 0);
     return 'noon';
+  }
+};
+
+/**
+ * Midnight
+ */
+
+parser.prototype.midnight = function() {
+  var captures;
+  if (captures = /^midnight\b/.exec(this.str)) {
+    this.skip(captures);
+    var before = this.date.clone();
+    this.date.date.setHours(0, 0, 0);
+    return 'midnight';
   }
 };
 
@@ -11962,8 +11977,10 @@ function t(date) {
   var meridiem = 'am';
   var parts = t.split(':');
   parts.pop();
-  if (parts[0] > 12) {
-    parts[0] = parts[0] - 12;
+  var h = parts[0];
+
+  if (12 <= h) {
+    h = (12 == h) ? h : h - 12;
     meridiem = 'pm';
   }
   t = parts.join(':');

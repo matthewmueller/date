@@ -69,8 +69,10 @@ function t(date) {
   var meridiem = 'am';
   var parts = t.split(':');
   parts.pop();
-  if (parts[0] > 12) {
-    parts[0] = parts[0] - 12;
+  var h = parts[0];
+
+  if (12 <= h) {
+    h = (12 == h) ? h : h - 12;
     meridiem = 'pm';
   }
   t = parts.join(':');
