@@ -128,6 +128,12 @@ describe('dates', function () {
     assert('5/13/13' == d(date));
   });
 
+  it('Monday at 9am', function () {
+    var date = parse('Monday at 9am', mon);
+    assert('9:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
   it('monday at 1:00am', function () {
     var date = parse('monday at 1:00am', mon);
     assert('1:00:00' == t(date));
@@ -198,6 +204,31 @@ describe('tonight', function () {
     var date = parse('tonight at 5', mon);
     assert('17:00:00' == t(date));
     assert('5/13/13' == d(date));
+  });
+});
+
+/**
+ * Midnight
+ */
+describe('mightnight', function () {
+  it('midnight', function () {
+    var date = parse('midnight', mon);
+
+    assert('0:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  it('tomorrow at midnight', function () {
+    var date = parse('tomorrow at midnight', mon);
+    assert('0:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  it('midnight (@ 1:30pm)', function () {
+    var afternoon = new Date('May 13, 2013 13:30:00')
+    var date = parse('midnight', afternoon);
+    assert('0:00:00' == t(date));
+    assert('5/14/13' == d(date));
   });
 });
 
