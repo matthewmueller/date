@@ -475,6 +475,19 @@ describe('other inputs', function () {
 });
 
 /**
+ * Bug fixes
+ */
+
+describe('bug fixes', function () {
+  it('at 12:30pm (fixes: #6)', function () {
+    var after = new Date('May 13, 2013 13:30:00');
+    var date = parse('at 12:30pm', after);
+    assert('12:30:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+});
+
+/**
  * Time helper function
  */
 
