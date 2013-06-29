@@ -376,12 +376,6 @@ describe('morning', function() {
  */
 
 describe('months', function () {
-  it('this month', function () {
-    var date = parse('this month', mon);
-    assert('1:30:00' == t(date));
-    assert('5/13/13' == d(date));
-  });
-
   it('next month', function () {
     var date = parse('next month', mon);
     assert('1:30:00' == t(date));
@@ -428,12 +422,6 @@ describe('months', function () {
  */
 
 describe('year', function() {
-  it('this year', function() {
-    var date = parse('year', mon);
-    assert('1:30:00' == t(date));
-    assert('5/13/13' == d(date));
-  });
-
   it('next year', function () {
     var date = parse('next year', mon);
     assert('1:30:00' == t(date));
@@ -516,6 +504,12 @@ describe('bug fixes', function () {
     assert('12:30:00' == t(date));
     assert('5/14/13' == d(date));
   });
+
+  it('return null when no matches', function() {
+    var date = parse('what aint no time I ever heard of', mon);
+    assert(date == null);
+  })
+
 });
 
 /**
