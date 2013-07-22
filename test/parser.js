@@ -74,8 +74,26 @@ describe('hours', function() {
     assert('5/13/13' == d(date));
   });
 
+  it('at5', function () {
+    var date = parse('at5', mon);
+    assert('5:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('at 17', function () {
+    var date = parse('at 17', mon);
+    assert('17:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
   it('at 12:30', function () {
     var date = parse('at 12:30', mon);
+    assert('12:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('at 12.30', function () {
+    var date = parse('at 12.30', mon);
     assert('12:30:00' == t(date));
     assert('5/13/13' == d(date));
   });
@@ -134,6 +152,18 @@ describe('dates', function () {
     assert('5/13/13' == d(date));
   });
 
+  it('monday at 9', function () {
+    var date = parse('monday at 9', mon);
+    assert('9:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('monday at 21', function () {
+    var date = parse('monday at 21', mon);
+    assert('21:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
   it('monday at 1:00am', function () {
     var date = parse('monday at 1:00am', mon);
     assert('1:00:00' == t(date));
@@ -172,6 +202,12 @@ describe('tomorrow', function () {
 describe('yesterday', function () {
   it('yesterday at 3pm', function () {
     var date = parse('yesterday at 3pm', mon);
+    assert('15:00:00' == t(date));
+    assert('5/12/13' == d(date));
+  });
+
+  it('yesterday at 15', function () {
+    var date = parse('yesterday at 15', mon);
     assert('15:00:00' == t(date));
     assert('5/12/13' == d(date));
   });

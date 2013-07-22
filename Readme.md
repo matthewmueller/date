@@ -47,6 +47,11 @@ date('this morning at 9')
 date('2 years from yesterday at 5pm')
 date('last month')
 date('tomorrow afternoon at 4:30pm 1 month from now')
+
+date('at 12:30')
+date('at 12.30')
+date('tuesday at 9')
+date('tomorrow at 15')
 ```
 
 ## API
