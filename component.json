@@ -2,10 +2,15 @@
   "name": "date",
   "repo": "matthewmueller/date",
   "description": "dates for humans",
-  "version": "0.1.1",
-  "keywords": ["date", "parsing", "human"],
+  "version": "0.2.0",
+  "keywords": [
+    "date",
+    "parsing",
+    "human"
+  ],
   "dependencies": {
-    "visionmedia/debug": "*"
+    "visionmedia/debug": "*",
+    "nmussy/readint": "*"
   },
   "main": "index.js",
   "scripts": [

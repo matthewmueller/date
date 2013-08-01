@@ -64,7 +64,6 @@ require.aliases = {};
 
 require.resolve = function(path) {
   if (path.charAt(0) === '/') path = path.slice(1);
-  var index = path + '/index.js';
 
   var paths = [
     path,
@@ -77,10 +76,7 @@ require.resolve = function(path) {
   for (var i = 0; i < paths.length; i++) {
     var path = paths[i];
     if (require.modules.hasOwnProperty(path)) return path;
-  }
-
-  if (require.aliases.hasOwnProperty(index)) {
-    return require.aliases[index];
+    if (require.aliases.hasOwnProperty(path)) return require.aliases[path];
   }
 };
 
@@ -346,6 +342,119 @@ function coerce(val) {
 if (window.localStorage) debug.enable(localStorage.debug);
 
 });
+require.register("nmussy-readint/bin/readint.js", function(exports, require, module){
+module.exports = require('../lib/readint.js');
+});
+require.register("nmussy-readint/lib/readint.js", function(exports, require, module){
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2013 Jimmy Gaussen
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+function readint(str, locale) {
+	if(!isNaN(global = parseInt(str)))
+		return global;
+
+	if(typeof locale === 'undefined')
+		locale = 'en';
+	locale = require('../locales/' + locale);
+
+	if((tokens = _tokenize(str, locale)).length > 0)
+		return _readint(tokens, locale);
+	return -1;
+};
+
+function _readint(tokens, locale) {
+	if(tokens.length === 1)
+		return tokens[0].value;
+	if(tokens.length === 0)
+		return -1;
+
+	var highestLevelIndex = -1, highestLevel = -1, lValue, rValue;
+	for(var i = 0; i < tokens.length; ++i)
+		if(tokens[i].level > highestLevel) {
+			highestLevel = tokens[i].level;
+			highestLevelIndex = i;
+		}
+
+	lValue = _readint(tokens.slice(0, highestLevelIndex), locale);
+	if((rValue = _readint(tokens.slice(highestLevelIndex + 1), locale)) === -1)
+		rValue = 0;
+
+	if(locale.LTRlevels.indexOf(highestLevel) !== -1)
+		return (lValue === -1 ? 0 : lValue) + tokens[highestLevelIndex].value + rValue;
+
+	return (lValue === -1 ? 1 : lValue) * tokens[highestLevelIndex].value + rValue;
+};
+
+function _tokenize(str, locale) {
+	var result = [];
+
+	for(var i = 0, tokens = str.toLowerCase().split(locale.split), keywords = _parsekeywords(locale.values);
+		 typeof tokens[i] !== 'undefined'; ++i) {
+		if(tokens[i].length === 0) {
+			tokens.splice(i--, 1);
+			continue;
+		}
+
+		for(var j = 0; j < locale.replace.length; ++j)
+			tokens[i] = tokens[i].replace(locale.replace[j][0], locale.replace[j][1]);
+
+		for(var j = 0; ; ++j)
+			if(j >= keywords.length) {
+				tokens.splice(i--, 1);
+				break;
+			} else if(tokens[i] === keywords[j].string) {
+				result.push(keywords[j]);
+				break;
+			}
+	}
+	return result;
+};
+
+function _parsekeywords (values) {
+	var keys = [];
+	for(var i = 0; i < values.length; ++i)
+		for(var key in values[i])
+			keys.push({'string': key, 'value': values[i][key], 'level': i});
+	return keys;
+};
+
+module.exports = readint;
+});
+require.register("nmussy-readint/locales/en.js", function(exports, require, module){
+module.exports = {
+	'split' : /\s|\sand|(?=teen)/,
+	'replace' : [[/ies?$/g, 'y'], [/s$/g,'']],
+	'LTRlevels': [1],
+	'values': [
+		{"zero": 0, "one": 1, "two": 2, "three": 3, "thir": 3, "four": 4, "five": 5, "fif": 5, "six": 6, "seven": 7, "eight": 8, "eigh": 8, "nine": 9, "eleven": 11, "twelve": 12},
+		{"ten": 10, "teen": 10, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90},
+		{"hundred": 100},
+		{"thousand": 1000},
+		{"million": 1000000},
+		{"billion": 1000000000},
+		{"trillion": 1000000000000}
+	]
+};
+});
 require.register("date/index.js", function(exports, require, module){
 /**
  * Expose `Date`
@@ -537,7 +646,7 @@ date.prototype.year = function(n) {
  * @return {date}
  */
 
-date.prototype.time = function(h, m, s) {
+date.prototype.time = function(h, m, s, meridiem) {
   if (h === false) {
     h = this.date.getHours();
   } else {
@@ -623,6 +732,7 @@ require.register("date/lib/parser.js", function(exports, require, module){
  */
 
 var date = require('./date');
+var readint = require('readint');
 var debug = require('debug')('date:parser');
 
 /**
@@ -640,7 +750,7 @@ var rMeridiem = /^(\d{1,2})(:(\d{1,2}))?([:.](\d{1,2}))?\s*([ap]m)/;
 var rHourMinute = /^(\d{1,2})(:(\d{1,2}))([:.](\d{1,2}))?/;
 var rDays = /\b(sun(day)?|mon(day)?|tues(day)?|wed(nesday)?|thur(sday|s)?|fri(day)?|sat(urday)?)s?\b/
 var rPast = /\b(last|yesterday|ago)\b/
-var rDayMod = /\b(morning|noon|afternoon|night|evening)\b/
+var rDayMod = /\b(morning|noon|afternoon|night|evening|midnight)\b/
 
 /**
  * Expose `parser`
@@ -661,7 +771,7 @@ function parser(str, offset) {
   var d = offset || new Date;
   this.date = new date(d);
   this.original = str;
-  this.str = str;
+  this.str = str.toLowerCase();
   this.stash = [];
   this.tokens = [];
   while (this.advance() !== 'eos');
@@ -685,6 +795,7 @@ parser.prototype.advance = function() {
     || this.yesterday()
     || this.tomorrow()
     || this.noon()
+    || this.midnight()
     || this.night()
     || this.afternoon()
     || this.morning()
@@ -926,8 +1037,8 @@ parser.prototype.time = function(h, m, s, meridiem) {
 
   if (meridiem) {
     // convert to 24 hour
-    h = ('pm' == meridiem) ? +h + 12 : h; // 6pm => 18
-    h = (12 == h && 'am' == meridiem) ? 0 : h; // 12am => 0
+    h = ('pm' == meridiem && 12 > h) ? +h + 12 : h; // 6pm => 18
+    h = ('am' == meridiem && 12 == h) ? 0 : h; // 12am => 0
   }
 
   m = (!m && d.changed('minutes')) ? false : m;
@@ -991,6 +1102,20 @@ parser.prototype.noon = function() {
     var before = this.date.clone();
     this.date.date.setHours(12, 0, 0);
     return 'noon';
+  }
+};
+
+/**
+ * Midnight
+ */
+
+parser.prototype.midnight = function() {
+  var captures;
+  if (captures = /^midnight\b/.exec(this.str)) {
+    this.skip(captures);
+    var before = this.date.clone();
+    this.date.date.setHours(0, 0, 0);
+    return 'midnight';
   }
 };
 
@@ -1123,7 +1248,7 @@ parser.prototype.ago = function() {
  */
 
 parser.prototype.number = function() {
-  var captures;
+  var captures, intval;
   if (captures = /^(\d+)/.exec(this.str)) {
     var n = captures[1];
     this.skip(captures);
@@ -1140,7 +1265,39 @@ parser.prototype.number = function() {
     }
 
     return 'number';
+  } else if ((intval = readint(this.str)) !== -1) {
+    var foundChars = this.str, possibleTrim, index = -1;
+    while (true) {
+      if ((index = foundChars.indexOf(" ")) === -1)
+        break;
+      possibleTrim = foundChars.substr(index + 1);
+      if (readint(possibleTrim) !== intval)
+        break;
+      foundChars = possibleTrim;
+    }
+    while (true) {
+      if ((index = foundChars.lastIndexOf(" ")) === -1)
+        break;
+      possibleTrim = foundChars.substr(0, index);
+      if (readint(possibleTrim) !== intval)
+        break;
+      foundChars = possibleTrim;
+    }
+    this.str = this.str.replace(foundChars, '');
+    var mod = this.peek();
+
+    // If we have a defined modifier, then update
+    if (this.date[mod]) {
+      if ('ago' == this.peek()) intval = -intval;
+      this.date[mod](intval);
+    } else if (this._meridiem) {
+      // when we don't have meridiem, possibly use context to guess
+      this.time(intval, 0, 0, this._meridiem);
+      this._meridiem = null;
+    }
+    return 'number';
   }
+
 };
 
 /**
@@ -1168,13 +1325,22 @@ parser.prototype.other = function() {
 };
 
 });
+
+
 require.alias("visionmedia-debug/index.js", "date/deps/debug/index.js");
 require.alias("visionmedia-debug/debug.js", "date/deps/debug/debug.js");
 require.alias("visionmedia-debug/index.js", "debug/index.js");
 
-require.alias("date/index.js", "date/index.js");
-
-if (typeof exports == "object") {
+require.alias("nmussy-readint/bin/readint.js", "date/deps/readint/bin/readint.js");
+require.alias("nmussy-readint/lib/readint.js", "date/deps/readint/lib/readint.js");
+require.alias("nmussy-readint/locales/en.js", "date/deps/readint/locales/en.js");
+require.alias("nmussy-readint/locales/es.js", "date/deps/readint/locales/es.js");
+require.alias("nmussy-readint/locales/fr.js", "date/deps/readint/locales/fr.js");
+require.alias("nmussy-readint/locales/de.js", "date/deps/readint/locales/de.js");
+require.alias("nmussy-readint/bin/readint.js", "date/deps/readint/index.js");
+require.alias("nmussy-readint/bin/readint.js", "readint/index.js");
+require.alias("nmussy-readint/bin/readint.js", "nmussy-readint/index.js");
+require.alias("date/index.js", "date/index.js");if (typeof exports == "object") {
   module.exports = require("date");
 } else if (typeof define == "function" && define.amd) {
   define(function(){ return require("date"); });

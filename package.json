@@ -1,10 +1,11 @@
 {
   "name": "date.js",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "dates for humans",
   "main": "index.js",
   "dependencies": {
-    "debug": "~0.7.2"
+    "debug": "~0.7.2",
+    "readint": ">=0.2.2"
   },
   "devDependencies": {
     "better-assert": "~1.0.0",

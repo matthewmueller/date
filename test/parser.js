@@ -506,6 +506,38 @@ describe('other inputs', function () {
 });
 
 /**
+ * Written numbers reading
+ */
+
+describe('written numbers', function () {
+  it('in two days', function () {
+    var date = parse('in two days', mon);
+    assert('1:30:00' == t(date));
+    assert('5/15/13' == d(date));
+  });
+  it('tomorrow night at nine', function () {
+    var date = parse('tomorrow night at nine', mon);
+    assert('21:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+  it('two years from yesterday at five pm', function () {
+    var date = parse('two years from yesterday at five pm', mon);
+    assert('17:00:00' == t(date));
+    assert('5/12/15' == d(date));
+  });
+  it('two years from yesterday at 5pm', function () {
+    var date = parse('two years from yesterday at 5pm', mon);
+    assert('17:00:00' == t(date));
+    assert('5/12/15' == d(date));
+  });
+  it('two months from tomorrow', function () {
+    var date = parse('two months from tomorrow', mon);
+    assert('1:30:00' == t(date));
+    assert('7/14/13' == d(date));
+  });
+});
+
+/**
  * Bug fixes
  */
 
