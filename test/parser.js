@@ -515,6 +515,16 @@ describe('written numbers', function () {
     assert('1:30:00' == t(date));
     assert('5/15/13' == d(date));
   });
+  it('tonight at five', function () {
+    var date = parse('tonight at five', mon);
+    assert('17:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+  it('in five hours', function () {
+    var date = parse('in five hours', mon);
+    assert('6:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
   it('tomorrow night at nine', function () {
     var date = parse('tomorrow night at nine', mon);
     assert('21:00:00' == t(date));
