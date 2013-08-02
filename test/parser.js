@@ -515,36 +515,61 @@ describe('written numbers', function () {
     assert('1:30:00' == t(date));
     assert('5/15/13' == d(date));
   });
+
   it('tonight at five', function () {
     var date = parse('tonight at five', mon);
     assert('17:00:00' == t(date));
     assert('5/13/13' == d(date));
   });
+
   it('in five hours', function () {
     var date = parse('in five hours', mon);
     assert('6:30:00' == t(date));
     assert('5/13/13' == d(date));
   });
+
   it('tomorrow night at nine', function () {
     var date = parse('tomorrow night at nine', mon);
     assert('21:00:00' == t(date));
     assert('5/14/13' == d(date));
   });
+
   it('two years from yesterday at five pm', function () {
     var date = parse('two years from yesterday at five pm', mon);
     assert('17:00:00' == t(date));
     assert('5/12/15' == d(date));
   });
+
   it('two years from yesterday at 5pm', function () {
     var date = parse('two years from yesterday at 5pm', mon);
     assert('17:00:00' == t(date));
     assert('5/12/15' == d(date));
   });
+
   it('two months from tomorrow', function () {
     var date = parse('two months from tomorrow', mon);
     assert('1:30:00' == t(date));
     assert('7/14/13' == d(date));
+  });  
+
+  it('this morning at nine', function () {
+    var date = parse('this morning at nine', mon);
+    assert('9:00:00' == t(date));
+    assert('5/13/13' == d(date));
   });
+  
+  it('tuesday at nine am', function () {
+    var date = parse('tuesday at nine am', mon);
+    assert('9:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+  
+  it('tuesday at nine', function () {
+    var date = parse('tuesday at nine', mon);
+    assert('9:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
 });
 
 /**
