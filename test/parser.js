@@ -570,6 +570,17 @@ describe('written numbers', function () {
     assert('5/14/13' == d(date));
   });
 
+  it('at twelve thirty', function () {
+    var date = parse('at twelve thirty', mon);
+    assert('12:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('next monday at one', function () {
+    var date = parse('next monday at one', mon);
+    assert('13:00:00' == t(date));
+    assert('5/20/13' == d(date));
+  });
 });
 
 /**
