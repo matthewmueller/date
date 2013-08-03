@@ -294,13 +294,13 @@ describe('weeks', function () {
 describe('night', function() {
   it('night', function () {
     var date = parse('night', mon);
-    assert('17:00:00' == t(date));
+    assert('19:00:00' == t(date));
     assert('5/13/13' == d(date));
   });
 
   it('tomorrow night', function () {
     var date = parse('tomorrow night', mon);
-    assert('17:00:00' == t(date));
+    assert('19:00:00' == t(date));
     assert('5/14/13' == d(date));
   });
 
@@ -312,6 +312,36 @@ describe('night', function() {
 
   it('last night', function () {
     var date = parse('last night', mon);
+    assert('19:00:00' == t(date));
+    assert('5/12/13' == d(date));
+  });
+})
+
+/**
+ * Evening
+ */
+
+describe('evening', function() {
+  it('evening', function () {
+    var date = parse('evening', mon);
+    assert('17:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('tomorrow evening', function () {
+    var date = parse('tomorrow evening', mon);
+    assert('17:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  it('tomorrow evening at 9', function () {
+    var date = parse('tomorrow evening at 9', mon);
+    assert('21:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+
+  it('last evening', function () {
+    var date = parse('last evening', mon);
     assert('17:00:00' == t(date));
     assert('5/12/13' == d(date));
   });
