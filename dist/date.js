@@ -64,7 +64,6 @@ require.aliases = {};
 
 require.resolve = function(path) {
   if (path.charAt(0) === '/') path = path.slice(1);
-  var index = path + '/index.js';
 
   var paths = [
     path,
@@ -77,10 +76,7 @@ require.resolve = function(path) {
   for (var i = 0; i < paths.length; i++) {
     var path = paths[i];
     if (require.modules.hasOwnProperty(path)) return path;
-  }
-
-  if (require.aliases.hasOwnProperty(index)) {
-    return require.aliases[index];
+    if (require.aliases.hasOwnProperty(path)) return require.aliases[path];
   }
 };
 
@@ -537,7 +533,7 @@ date.prototype.year = function(n) {
  * @return {date}
  */
 
-date.prototype.time = function(h, m, s) {
+date.prototype.time = function(h, m, s, meridiem) {
   if (h === false) {
     h = this.date.getHours();
   } else {
@@ -640,7 +636,7 @@ var rMeridiem = /^(\d{1,2})(:(\d{1,2}))?([:.](\d{1,2}))?\s*([ap]m)/;
 var rHourMinute = /^(\d{1,2})(:(\d{1,2}))([:.](\d{1,2}))?/;
 var rDays = /\b(sun(day)?|mon(day)?|tues(day)?|wed(nesday)?|thur(sday|s)?|fri(day)?|sat(urday)?)s?\b/
 var rPast = /\b(last|yesterday|ago)\b/
-var rDayMod = /\b(morning|noon|afternoon|night|evening)\b/
+var rDayMod = /\b(morning|noon|afternoon|night|evening|midnight)\b/
 
 /**
  * Expose `parser`
@@ -661,7 +657,7 @@ function parser(str, offset) {
   var d = offset || new Date;
   this.date = new date(d);
   this.original = str;
-  this.str = str;
+  this.str = str.toLowerCase();
   this.stash = [];
   this.tokens = [];
   while (this.advance() !== 'eos');
@@ -685,7 +681,9 @@ parser.prototype.advance = function() {
     || this.yesterday()
     || this.tomorrow()
     || this.noon()
+    || this.midnight()
     || this.night()
+    || this.evening()
     || this.afternoon()
     || this.morning()
     || this.tonight()
@@ -926,8 +924,8 @@ parser.prototype.time = function(h, m, s, meridiem) {
 
   if (meridiem) {
     // convert to 24 hour
-    h = ('pm' == meridiem) ? +h + 12 : h; // 6pm => 18
-    h = (12 == h && 'am' == meridiem) ? 0 : h; // 12am => 0
+    h = ('pm' == meridiem && 12 > h) ? +h + 12 : h; // 6pm => 18
+    h = ('am' == meridiem && 12 == h) ? 0 : h; // 12am => 0
   }
 
   m = (!m && d.changed('minutes')) ? false : m;
@@ -995,7 +993,21 @@ parser.prototype.noon = function() {
 };
 
 /**
- * Night (arbitrarily set at 5pm)
+ * Midnight
+ */
+
+parser.prototype.midnight = function() {
+  var captures;
+  if (captures = /^midnight\b/.exec(this.str)) {
+    this.skip(captures);
+    var before = this.date.clone();
+    this.date.date.setHours(0, 0, 0);
+    return 'midnight';
+  }
+};
+
+/**
+ * Night (arbitrarily set at 7pm)
  */
 
 parser.prototype.night = function() {
@@ -1004,8 +1016,23 @@ parser.prototype.night = function() {
     this.skip(captures);
     this._meridiem = 'pm';
     var before = this.date.clone();
-    this.date.date.setHours(17, 0, 0);
+    this.date.date.setHours(19, 0, 0);
     return 'night'
+  }
+};
+
+/**
+ * Evening (arbitrarily set at 5pm)
+ */
+
+parser.prototype.evening = function() {
+  var captures;
+  if (captures = /^evening\b/.exec(this.str)) {
+    this.skip(captures);
+    this._meridiem = 'pm';
+    var before = this.date.clone();
+    this.date.date.setHours(17, 0, 0);
+    return 'evening'
   }
 };
 
@@ -1172,9 +1199,7 @@ require.alias("visionmedia-debug/index.js", "date/deps/debug/index.js");
 require.alias("visionmedia-debug/debug.js", "date/deps/debug/debug.js");
 require.alias("visionmedia-debug/index.js", "debug/index.js");
 
-require.alias("date/index.js", "date/index.js");
-
-if (typeof exports == "object") {
+require.alias("date/index.js", "date/index.js");if (typeof exports == "object") {
   module.exports = require("date");
 } else if (typeof define == "function" && define.amd) {
   define(function(){ return require("date"); });
