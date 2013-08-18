@@ -597,6 +597,27 @@ describe('parse context if its a string (fixes: #38)', function () {
   });
 });
 
+
+/**
+ * Support for dates with months
+ */
+
+describe('months (fixes: #10)', function (){
+  it('2nd of January', function () {
+    var after = new Date('May 13, 2013 13:30:00');
+    var date = parse('2nd of January 12:30', after);
+    assert('12:30:00' == t(date));
+    assert('1/2/13' == d(date));
+  });
+
+  it('1st of March', function () {
+    var after = new Date('May 13, 2013 13:30:00');
+    var date = parse('1st of March', after);
+    assert('13:30:00' == t(date));
+    assert('1/3/13' == d(date));
+  });
+});
+
 /**
  * Time helper function
  */
