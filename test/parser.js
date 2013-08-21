@@ -633,6 +633,20 @@ describe('months (fixes: #10)', function (){
 });
 
 /**
+ * Suppport 'ago' modifier
+ */
+
+describe('support "ago" modifier (fixes: #20)', function (){
+  var after = new Date('May 13, 2013 13:30:00');
+  it('2nd of January', function () {
+    var date = parse('5 minutes ago', after);
+    assert('12:25:00' == t(date));
+    assert('1/2/13' == d(date));
+  });
+});
+
+
+/**
  * Time helper function
  */
 
