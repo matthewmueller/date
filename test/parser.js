@@ -638,11 +638,49 @@ describe('months (fixes: #10)', function (){
 
 describe('support "ago" modifier (fixes: #20)', function (){
   var after = new Date('May 13, 2013 13:30:00');
-  it('2nd of January', function () {
-    var date = parse('5 minutes ago', after);
-    assert('12:25:00' == t(date));
-    assert('1/2/13' == d(date));
+
+  it('x seconds ago', function () {
+    var date = parse('10 seconds ago', after);
+    assert('13:29:50' == t(date));
+    assert('5/13/13' == d(date));
   });
+
+  it('x minutes ago', function () {
+    var date = parse('5 minutes ago', after);
+    assert('13:25:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('x hours ago', function () {
+    var date = parse('5 hours ago', after);
+    assert('8:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('x days ago', function () {
+    var date = parse('5 day ago', after);
+    assert('13:30:00' == t(date));
+    assert('5/8/13' == d(date));
+  });
+
+  it('x week ago', function () {
+    var date = parse('2 week ago', after);
+    assert('13:30:00' == t(date));
+    assert('4/29/13' == d(date));
+  });
+
+  it('x months ago', function () {
+    var date = parse('10 months ago', after);
+    assert('13:30:00' == t(date));
+    assert('7/13/12' == d(date));
+  });
+
+  it('x year ago', function () {
+    var date = parse('10 year ago', after);
+    assert('13:30:00' == t(date));
+    assert('5/13/03' == d(date));
+  });
+
 });
 
 
