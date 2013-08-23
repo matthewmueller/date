@@ -651,6 +651,13 @@ describe('support "ago" modifier (fixes: #20)', function (){
     assert('5/13/13' == d(date));
   });
 
+
+  it('x minute ago', function () {
+    var date = parse('1 minutes ago', after);
+    assert('13:29:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
   it('x hours ago', function () {
     var date = parse('5 hours ago', after);
     assert('8:30:00' == t(date));
