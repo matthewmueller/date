@@ -1,4 +1,4 @@
-# date
+# date [![Build Status](https://secure.travis-ci.org/MatthewMueller/date.png?branch=master)](http://travis-ci.org/MatthewMueller/date)
 
 Date is an english language date parser for node.js and the browser. For examples and demos, see: [http://matthewmueller.github.io/date/](http://matthewmueller.github.io/date/)
 

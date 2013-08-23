@@ -11,7 +11,7 @@
     "mocha": "~1.9.0"
   },
   "scripts": {
-    "test": "make"
+    "test": "make test"
   },
   "keywords": [
     "dates",
