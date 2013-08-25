@@ -592,6 +592,7 @@ describe('parse context if its a string (fixes: #38)', function () {
   it('string context', function () {
     var today = new Date();
     var date = parse('today at 11', "yesterday");
+    console.log(d(date) + " == " + d(today));
     assert(d(date) == d(today));
     assert('11:00:00' == t(date));
   });
