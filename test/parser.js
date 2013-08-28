@@ -582,6 +582,13 @@ describe('bug fixes', function () {
     assert('12:30:00' == t(date));
     assert('5/14/13' == d(date));
   });
+
+  it('at X in the morning (fixes: #36)', function() {
+    var past = new Date('May 13, 2013 18:00:00')
+    var date = parse('tomorrow at 9 in the morning', past);
+    assert('9:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  })
 });
 
 /**
