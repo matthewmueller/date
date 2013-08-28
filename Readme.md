@@ -66,6 +66,23 @@ To run the tests, you'll need node.js:
     npm install
     make test
 
+## Contributors
+
+```
+project  : date
+ repo age : 4 months
+ active   : 20 days
+ commits  : 50
+ files    : 13
+ authors  :
+    25  Matt Mueller            50.0%
+    10  Bulkan Evcimen          20.0%
+     9  Matthew Mueller         18.0%
+     3  Eero Norri              6.0%
+     2  thomas                  4.0%
+     1  Jimmy Gaussen           2.0%
+```
+
 ## License
 
 (The MIT License)
