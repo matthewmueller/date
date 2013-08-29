@@ -339,7 +339,9 @@ function coerce(val) {
 
 // persist
 
-if (window.localStorage) debug.enable(localStorage.debug);
+try {
+  if (window.localStorage) debug.enable(localStorage.debug);
+} catch(e){}
 
 });
 require.register("date/index.js", function(exports, require, module){
@@ -626,17 +628,22 @@ var debug = require('debug')('date:parser');
  */
 
 var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september',
+              'october', 'november', 'december' ]
 
 /**
  * Regexs
  */
 
-// 5, 05, 5:30, 05:30:10, 05:30.10
-var rMeridiem = /^(\d{1,2})(:(\d{1,2}))?([:.](\d{1,2}))?\s*([ap]m)/;
-var rHourMinute = /^(\d{1,2})(:(\d{1,2}))([:.](\d{1,2}))?/;
-var rDays = /\b(sun(day)?|mon(day)?|tues(day)?|wed(nesday)?|thur(sday|s)?|fri(day)?|sat(urday)?)s?\b/
-var rPast = /\b(last|yesterday|ago)\b/
-var rDayMod = /\b(morning|noon|afternoon|night|evening|midnight)\b/
+// 5, 05, 5:30, 5.30, 05:30:10, 05:30.10, 05.30.10, at 5
+var rMeridiem = /^(\d{1,2})([:.](\d{1,2}))?([:.](\d{1,2}))?\s*([ap]m)/;
+var rHourMinute = /^(\d{1,2})([:.](\d{1,2}))([:.](\d{1,2}))?/;
+var rAtHour = /^at\s?(\d{1,2})$/;
+var rDays = /\b(sun(day)?|mon(day)?|tues(day)?|wed(nesday)?|thur(sday|s)?|fri(day)?|sat(urday)?)s?\b/;
+var rMonths = /^((\d{1,2})(st|nd|rd|th))\sof\s(january|februay|march|april|may|june|july|august|september|october|november|december)/;
+var rPast = /\b(last|yesterday|ago)\b/;
+var rDayMod = /\b(morning|noon|afternoon|night|evening|midnight)\b/;
+var rAgo = /^(\d*)\s?\b(second|minute|hour|day|week|month|year)[s]?\b\s?ago$/;
 
 /**
  * Expose `parser`
@@ -654,6 +661,7 @@ module.exports = parser;
 
 function parser(str, offset) {
   if(!(this instanceof parser)) return new parser(str, offset);
+  if(typeof offset == 'string') offset = parser(offset);
   var d = offset || new Date;
   this.date = new date(d);
   this.original = str;
@@ -676,8 +684,10 @@ parser.prototype.advance = function() {
     || this.space()
     || this._next()
     || this.last()
-    || this.ago()
     || this.dayByName()
+    || this.monthByName()
+    || this.timeAgo()
+    || this.ago()
     || this.yesterday()
     || this.tomorrow()
     || this.noon()
@@ -689,6 +699,7 @@ parser.prototype.advance = function() {
     || this.tonight()
     || this.meridiem()
     || this.hourminute()
+    || this.athour()
     || this.week()
     || this.month()
     || this.year()
@@ -851,6 +862,35 @@ parser.prototype.dayByName = function() {
   }
 };
 
+
+/**
+ * Month by name
+ */
+
+parser.prototype.monthByName = function() {
+  var captures;
+  if (captures = rMonths.exec(this.str)) {
+    var day = captures[2]
+    var month = captures[4];
+    this.date.date.setMonth((months.indexOf(month)));
+    if (day) this.date.date.setDate(parseInt(day) - 1);
+    this.skip(captures);
+    return captures[0];
+  }
+};
+
+
+parser.prototype.timeAgo = function() {
+  var captures;
+  if (captures = rAgo.exec(this.str)) {
+    var num = captures[1];
+    var mod = captures[2];
+    this.date[mod](-num);
+    this.skip(captures);
+    return 'timeAgo';
+  }
+};
+
 /**
  * Week
  */
@@ -915,6 +955,20 @@ parser.prototype.hourminute = function() {
 };
 
 /**
+ * At Hour (ex. at 5)
+ */
+
+parser.prototype.athour = function() {
+  var captures;
+  if (captures = rAtHour.exec(this.str)) {
+    this.skip(captures);
+    this.time(captures[1], 0, 0, this._meridiem);
+    this._meridiem = null;
+    return 'athour';
+  }
+};
+
+/**
  * Time set helper
  */
 
@@ -947,7 +1001,7 @@ parser.prototype.nextTime = function(before) {
 
   // If time is in the past, we need to guess at the next time
   if (rDays.test(orig)) d.day(7);
-  else d.day(1);
+  else if ((before - d.date) / 1000 > 60) d.day(1);
 
   return this;
 };
@@ -1065,7 +1119,7 @@ parser.prototype.morning = function() {
     this.skip(captures);
     this._meridiem = 'am';
     var before = this.date.clone();
-    this.date.date.setHours(8, 0, 0);
+    if (!this.date.changed('hours')) this.date.date.setHours(8, 0, 0);
     return 'morning';
   }
 };
@@ -1162,6 +1216,9 @@ parser.prototype.number = function() {
       this.date[mod](n);
     } else if (this._meridiem) {
       // when we don't have meridiem, possibly use context to guess
+      this.time(n, 0, 0, this._meridiem);
+      this._meridiem = null;
+    } else if (this.original.indexOf('at') > -1 ) {
       this.time(n, 0, 0, this._meridiem);
       this._meridiem = null;
     }
