@@ -560,6 +560,30 @@ describe('dates in the past', function() {
 });
 
 /**
+ * Times
+ */
+describe('times', function() {
+  it('1:30', function () {
+    var date = parse('1:30', mon);
+    assert('1:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('2:31', function () {
+    var date = parse('2:31', mon);
+    assert('2:31:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('00:28', function () {
+    // past time will result in tomorrow
+    var date = parse('00:28', mon);
+    assert('0:28:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
+});
+
+/**
  * Ignore other input
  */
 
@@ -568,6 +592,16 @@ describe('other inputs', function () {
     var date = parse('yesterday, 2 years ago--.', mon);
     assert('1:30:00' == t(date));
     assert('5/12/11' == d(date))
+  });
+
+  it('invalid', function() {
+    var date = parse('invalid', mon);
+    assert(d(mon) == d(date));
+  });
+
+  it('empty', function() {
+    var date = parse('', mon);
+    assert(d(mon) == d(date));
   });
 });
 
