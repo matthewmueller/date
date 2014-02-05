@@ -13,9 +13,9 @@
   "dependencies": {
     "matthewmueller/date": "*",
     "matthewmueller/clock": "*",
-    "component/calendar": "*",
-    "component/event": "*",
-    "matthewmueller/debounce": "*",
-    "visionmedia/debug": "*"
+    "component/calendar": "0.0.5",
+    "component/event": "0.1.2",
+    "component/debounce": "0.0.3",
+    "visionmedia/debug": "0.7.4"
   }
 }
