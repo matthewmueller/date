@@ -18,5 +18,11 @@
     "humans",
     "parsing"
   ],
-  "author": "Matthew Mueller"
+  "author": "Matthew Mueller",
+  "spm": {
+    "main": "index.js",
+    "dependencies": {
+      "debug": "0.8.1"
+    }
+  }
 }
