@@ -18,6 +18,7 @@
     "humans",
     "parsing"
   ],
+  "repository": "https://github.com/MatthewMueller/date",
   "author": "Matthew Mueller",
   "spm": {
     "main": "index.js",
