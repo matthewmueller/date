@@ -1,4 +1,4 @@
-# date [![Build Status](https://secure.travis-ci.org/MatthewMueller/date.png?branch=master)](http://travis-ci.org/MatthewMueller/date) [![Libscore](http://img.shields.io/badge/libscore-35-brightgreen.svg?style=flat-square)](http://libscore.com/#date) [![Gittask](https://gittask.com/matthewmueller/date.svg)](https://gittask.com/matthewmueller/date)
+# date [![Build Status](https://travis-ci.org/matthewmueller/date.svg?branch=master)](https://travis-ci.org/matthewmueller/date) [![Libscore](http://img.shields.io/badge/libscore-35-brightgreen.svg?style=flat-square)](http://libscore.com/#date) [![Gittask](https://gittask.com/matthewmueller/date.svg)](https://gittask.com/matthewmueller/date)
 
 Date is an english language date parser for node.js and the browser. For examples and demos, see: [http://matthewmueller.github.io/date/](http://matthewmueller.github.io/date/)
 
