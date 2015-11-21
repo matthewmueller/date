@@ -1,4 +1,9 @@
 
+0.2.1 / 2015-11-20
+==================
+
+  * fix(months): adds no extra day when months in the past
+
 0.2.0 / 2014-02-21
 ==================
 
