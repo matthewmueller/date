@@ -663,13 +663,19 @@ describe('months (fixes: #10)', function (){
     var date = parse('31st of September 4:00am', after);
     assert('4:00:00' == t(date));
     assert('9/31/13' != d(date));
-    assert('9/30/13' == d(date));
+    assert('10/1/13' == d(date));
   });
 
   it('1st of January 4:00am', function(){
     var date = parse('1st of January 4:00am', after);
     assert('4:00:00' == t(date));
     assert('1/1/13' == d(date));
+  })
+
+  it('9th of December 4:00am', function(){
+    var date = parse('9th of December 4:00am', after);
+    assert('4:00:00' == t(date));
+    assert('12/9/13' == d(date));
   })
 });
 
