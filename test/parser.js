@@ -241,6 +241,12 @@ describe('tonight', function () {
     assert('17:00:00' == t(date));
     assert('5/13/13' == d(date));
   });
+  
+  it('tonight at 5:30', function () {
+    var date = parse('tonight at 5:30', mon);
+    assert('17:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
 });
 
 /**
