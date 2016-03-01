@@ -62,6 +62,24 @@ describe('hours', function() {
     assert('5/13/13' == d(date));
   });
 
+  it('5 hours later', function () {
+    var date = parse('5 hours later', mon);
+    assert('6:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('in 5h', function () {
+    var date = parse('in 5h', mon);
+    assert('6:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('in 5hrs', function () {
+    var date = parse('in 5hrs', mon);
+    assert('6:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
   it('at 5am', function () {
     var date = parse('5am', mon);
     assert('5:00:00' == t(date));
@@ -193,6 +211,12 @@ describe('tomorrow', function () {
     assert('15:00:00' == t(date));
     assert('5/14/13' == d(date));
   });
+
+  it('tmr at 3pm', function () {
+    var date = parse('tmr at 3pm', mon);
+    assert('15:00:00' == t(date));
+    assert('5/14/13' == d(date));
+  });
 });
 
 /**
@@ -202,6 +226,12 @@ describe('tomorrow', function () {
 describe('yesterday', function () {
   it('yesterday at 3pm', function () {
     var date = parse('yesterday at 3pm', mon);
+    assert('15:00:00' == t(date));
+    assert('5/12/13' == d(date));
+  });
+
+  it('ytd at 3pm', function () {
+    var date = parse('ytd at 3pm', mon);
     assert('15:00:00' == t(date));
     assert('5/12/13' == d(date));
   });
@@ -310,8 +340,14 @@ describe('weeks', function () {
     assert('5/21/13' == d(date));
   });
 
+  it('next w tuesday', function () {
+    var date = parse('next w tuesday', mon);
+    assert('1:30:00' == t(date));
+    assert('5/21/13' == d(date));
+  });
+
   it('next wk tuesday', function () {
-    var date = parse('next week tuesday', mon);
+    var date = parse('next wk tuesday', mon);
     assert('1:30:00' == t(date));
     assert('5/21/13' == d(date));
   });
@@ -472,6 +508,12 @@ describe('months', function () {
     assert('7/14/13' == d(date));
   });
 
+  it('2M from tomorrow', function () {
+    var date = parse('2M from tomorrow', mon);
+    assert('1:30:00' == t(date));
+    assert('7/14/13' == d(date));
+  });
+
   it('2 monthes from tomorrow (misspelling)', function () {
     var date = parse('2 monthes from tomorrow', mon);
     assert('1:30:00' == t(date));
@@ -501,6 +543,12 @@ describe('months', function () {
 
 describe('year', function() {
   it('this year', function() {
+    var date = parse('year', mon);
+    assert('1:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('this yr', function() {
     var date = parse('year', mon);
     assert('1:30:00' == t(date));
     assert('5/13/13' == d(date));
@@ -665,6 +713,12 @@ describe('months (fixes: #10)', function (){
     assert('3/1/13' == d(date));
   });
 
+  it('1 st of March', function () {
+    var date = parse('1 st of March', after);
+    assert('13:30:00' == t(date));
+    assert('3/1/13' == d(date));
+  });
+
   it('31st of September 4:00am', function () {
     var date = parse('31st of September 4:00am', after);
     assert('4:00:00' == t(date));
@@ -704,7 +758,6 @@ describe('support "ago" modifier (fixes: #20)', function (){
     assert('5/13/13' == d(date));
   });
 
-
   it('x minute ago', function () {
     var date = parse('1 minutes ago', after);
     assert('13:29:00' == t(date));
@@ -739,6 +792,59 @@ describe('support "ago" modifier (fixes: #20)', function (){
     var date = parse('10 year ago', after);
     assert('13:30:00' == t(date));
     assert('5/13/03' == d(date));
+  });
+
+});
+
+
+/**
+ * Suppport natural language
+ */
+
+describe('support natural language, single-tokens without arithmetics (fixes: #66, 64, 28, 16, 15, 11, 4)', function (){
+
+  it('#66: an hour later', function () {
+    var date = parse('an hour later', mon);
+    assert('2:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('#64: 2w from wednesday', function () {
+    var date = parse('2w from wednesday', mon);
+    assert('1:30:00' == t(date));
+    assert('5/29/13' == d(date));
+  });
+
+  var after = new Date('May 13, 2013 13:30:00');
+  it('#28: 2nd day of January', function () {
+    var date = parse('2nd day of January 12:30', after);
+    assert('12:30:00' == t(date));
+    assert('1/2/13' == d(date));
+  });
+
+  // !pending
+  // it('#21: on 2nd January', function () {
+  //   var date = parse('on 2nd January 12:30', after);
+  //   assert('12:30:00' == t(date));
+  //   assert('1/2/13' == d(date));
+  // });
+
+  it('#16: two hours later', function () {
+    var date = parse('two hour later', mon);
+    assert('3:30:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('#15: a fortnight from wednesday', function () {
+    var date = parse('a fortnight from wednesday', mon);
+    assert('1:30:00' == t(date));
+    assert('5/29/13' == d(date));
+  });
+
+  it('#11: a minute ago', function () {
+    var date = parse('a minute ago', after);
+    assert('13:29:00' == t(date));
+    assert('5/13/13' == d(date));
   });
 
 });

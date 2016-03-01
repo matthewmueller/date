@@ -13,7 +13,7 @@
   },
   "n": {
     "0.25": ["quarter"],
-    "0.5": ["half", "1/2"],
+    "0.5": ["half", "1/2", "half a", "half an"],
     "0": ["zero"],
     "1": ["one", "a", "an", "first"],
     "2": ["two"],
@@ -46,7 +46,8 @@
     "1000": ["thousand", "thousands", "thousandth", "k", "K"]
   },
   "t": {
-    "d": ["st", "nd", "rd", "th"]
+    "th": ["st", "nd", "rd", "th", "st day", "nd day", "rd day", "th day"],
+    "2 week": ["fortnight", "next fortnight", "a fortnight"]
   },
   "dt": {
     "ms": ["ms", "millisecond", "milliseconds"],
@@ -55,8 +56,10 @@
     "hour": ["h", "hr", "hrs", "hour", "hours"],
     "day": ["d", "day", "days", "dai"],
     "week": ["w", "wk", "wks", "week", "weeks"],
-    "month": ["M", "mo", "moon", "moons", "month", "months"],
-    "year": ["y", "yr", "yrs", "year", "years"]
+    "month": ["M", "MM", "mo", "moon", "moons", "month", "months"],
+    "year": ["y", "yr", "yrs", "year", "years"],
+    "tomorrow": ["tmr", "tom", "tomorrow"],
+    "yesterday": ["ytd", "yesterday"]
   },
   "f": {
     "1": ["once"],
