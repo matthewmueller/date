@@ -4,7 +4,8 @@
   "description": "dates for humans",
   "main": "index.js",
   "dependencies": {
-    "debug": "~0.7.2"
+    "debug": "~0.7.2",
+    "lodash": "^4.5.1"
   },
   "devDependencies": {
     "better-assert": "~1.0.0",

@@ -1,0 +1,65 @@
+{
+  "op": {
+    "plus": ["plus", "+", "add", "and"],
+    "minus": ["minus", "subtract"],
+    "times": ["times", "multiply"],
+    "divide": ["divide"]
+  },
+  "c": {
+    "c": ["every", "per", "repeat"]
+  },
+  "r": {
+    "to": ["to", "thru", "through", "til", "till", "until", "-", "~"]
+  },
+  "n": {
+    "0.25": ["quarter"],
+    "0.5": ["half", "1/2"],
+    "0": ["zero"],
+    "1": ["one", "a", "an", "first"],
+    "2": ["two"],
+    "3": ["three", "third"],
+    "4": ["four", "fourth"],
+    "5": ["five", "fifth"],
+    "6": ["six", "sixth"],
+    "7": ["seven", "seventh"],
+    "8": ["eight", "eighth"],
+    "9": ["nine", "ninth"],
+    "10": ["ten", "tenth"],
+    "11": ["eleven", "eleventh"],
+    "12": ["twelve", "twelveth"],
+    "13": ["thirteen", "thirteenth"],
+    "14": ["fourteen", "fourteenth"],
+    "15": ["fifteen", "fifteenth"],
+    "16": ["sixteen", "sixteenth"],
+    "17": ["seventeen", "seventeenth"],
+    "18": ["eighteen", "eighteenth"],
+    "19": ["nineteen", "nineteenth"],
+    "20": ["twenty", "twentieth"],
+    "30": ["thirty", "thirtieth"],
+    "40": ["fourty", "fourtieth"],
+    "50": ["fifty", "fiftieth"],
+    "60": ["sixty", "sixtieth"],
+    "70": ["seventy", "seventieth"],
+    "80": ["eighty", "eightieth"],
+    "90": ["ninety", "ninetieth"],
+    "100": ["hundred", "hundreds", "hundredth"],
+    "1000": ["thousand", "thousands", "thousandth", "k", "K"]
+  },
+  "t": {
+    "d": ["st", "nd", "rd", "th"]
+  },
+  "dt": {
+    "ms": ["ms", "millisecond", "milliseconds"],
+    "second": ["s", "sec", "secs", "second", "seconds"],
+    "minute": ["m", "min", "mins", "minute", "minutes"],
+    "hour": ["h", "hr", "hrs", "hour", "hours"],
+    "day": ["d", "day", "days", "dai"],
+    "week": ["w", "wk", "wks", "week", "weeks"],
+    "month": ["M", "mo", "moon", "moons", "month", "months"],
+    "year": ["y", "yr", "yrs", "year", "years"]
+  },
+  "f": {
+    "1": ["once"],
+    "2": ["twice"]
+  }
+}

@@ -1,8 +1,8 @@
 ### Issues under work:
 - 71: "3.99" is interpreted as 4.39am: justified
 - 66, 64, 28, 21, 18, 16, 15, 11, 5, 4: normalization: natural language for numbers and time
-- 27, 26, 13: default, e.g. tomorrow at 11 -> at 11am, at midnight etc
-- 70, 63, 62 in <n><T>, with <op=and> etc
+- 70, 63, 62 in <n><T>, with <op=and> etc. support arithmetic
+- 27, 26, 13: default, e.g. tonight, tomorrow at 11 -> at 11am, at midnight etc
 - 55, 52, 25, 2 causality: before, after, ago, from now, <bar> ops
 - 32: ranges
 
