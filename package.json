@@ -5,16 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "debug": "~0.7.2",
-    "lodash.filter": "^4.2.0",
     "lodash.findkey": "^4.2.0",
-    "lodash.foreach": "^4.1.0",
-    "lodash.includes": "^4.1.0",
-    "lodash.isempty": "^4.1.2",
     "lodash.partition": "^4.2.0",
-    "lodash.trim": "^4.2.0"
+    "trim": "0.0.1"
   },
   "devDependencies": {
     "better-assert": "~1.0.0",
+    "browserify": "^13.0.0",
+    "disc": "^1.3.2",
     "mocha": "~1.9.0"
   },
   "scripts": {
