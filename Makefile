@@ -1,4 +1,4 @@
-test:
+test: install
 	@./node_modules/.bin/mocha -R spec
 
 install:

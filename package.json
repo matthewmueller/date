@@ -6,11 +6,9 @@
   "dependencies": {
     "debug": "~0.7.2",
     "lodash.findkey": "^4.2.0",
-    "lodash.foreach": "^4.1.0",
-    "lodash.includes": "^4.1.0",
-    "lodash.isempty": "^4.1.2",
     "lodash.partition": "^4.2.0",
-    "lodash.trim": "^4.2.0"
+    "lodash.trim": "^4.2.0",
+    "trim": "0.0.1"
   },
   "devDependencies": {
     "better-assert": "~1.0.0",
