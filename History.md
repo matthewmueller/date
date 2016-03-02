@@ -7,6 +7,11 @@
 - 32: ranges
 - fix decimal number parsing
 
+0.3.1 / 2016-03-02
+==================
+
+  * remove lodash dep
+
 0.3.0 / 2016-03-02
 ==================
 
