@@ -2,11 +2,11 @@
  * Module Dependencies
  */
 
-var Clock = require('clock');
-var Calendar = require('calendar');
-var event = require('event');
+var Clock = require('matthewmueller-clock');
+var Calendar = require('calendar-component');
+var event = require('component-event');
 var debounce = require('debounce');
-var date = require('date');
+var date = require('date.js');
 
 /**
  * Handle input
@@ -14,6 +14,20 @@ var date = require('date');
 
 var input = document.getElementById('date-input');
 input.oninput = debounce(parse, 200);
+input.focus();
+
+/**
+ * Time element
+ */
+
+var time = document.querySelector('#demo .time');
+
+/**
+ * Live clock: Update every second
+ */
+
+parse()
+setInterval(parse, 1000)
 
 /**
  * Parse the time
@@ -21,6 +35,10 @@ input.oninput = debounce(parse, 200);
 
 function parse() {
   var val = input.value;
+  if (!val) {
+    time.innerHTML = t(new Date);
+    return;
+  }
   var d = date(val);
   cal.select(d);
   time.innerHTML = t(d);
@@ -34,7 +52,10 @@ var table = document.getElementsByTagName('table')[0];
 event.bind(table, 'click', function(e) {
   var target = e.target;
   if ('TD' !== target.nodeName) return;
+  var prev = table.querySelector('[selected]')
+  prev && prev.removeAttribute('selected')
   input.value = target.innerText;
+  target.setAttribute('selected', true)
   parse()
 });
 
@@ -58,11 +79,8 @@ setInterval(function() {
 }, 1000);
 
 /**
- * Time
+ * Convert Date to Timestring
  */
-
-var time = document.querySelector('#demo .time');
-time.innerHTML = t(new Date);
 
 function t(date) {
   var t = date.toTimeString().split(' ')[0];

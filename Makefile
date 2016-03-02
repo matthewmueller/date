@@ -1,10 +1,7 @@
-build: components date.js css/base.css css/layout.css
-	@component build
+development:
+	@PORT=5004 ./node_modules/.bin/scooby dev.html --open
 
-components: component.json
-	@component install --dev
+build:
+	@./node_modules/.bin/scooby date.css date.js
 
-clean:
-	rm -fr build components template.js
-
-.PHONY: build test clean
+.PHONY: development build
