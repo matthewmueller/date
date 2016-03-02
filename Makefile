@@ -1,19 +1,17 @@
 test:
 	@./node_modules/.bin/mocha -R spec
 
-build: components index.js
-	@component build --dev
+install:
+	@npm install
 
-components: component.json
-	@component install --dev
+dist: install dist-build dist-minify
 
-clean:
-	rm -fr build components template.js
-
-dist: components dist-build dist-minify
+disc:
+	@./node_modules/.bin/browserify index.js --full-paths | discify --open
 
 dist-build:
-	@component build -s date -o dist -n date
+	@mkdir -p dist
+	@./node_modules/.bin/browserify index.js --standalone date -o dist/date.js
 
 dist-minify: dist/date.js
 	@curl -s \
@@ -25,4 +23,4 @@ dist-minify: dist/date.js
 		> $<.tmp
 	@mv $<.tmp dist/date.min.js
 
-.PHONY: test clean
+.PHONY: test dist disc install
