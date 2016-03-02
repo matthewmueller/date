@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "debug": "~0.7.2",
-    "lodash": "latest",
     "lodash.filter": "^4.2.0",
     "lodash.findkey": "^4.2.0",
     "lodash.foreach": "^4.1.0",
