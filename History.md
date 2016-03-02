@@ -1,12 +1,26 @@
-### Issues under work:
+### Issues currently under work:
 - 71: "3.99" is interpreted as 4.39am: justified
 - 66, 64, 28, 21, 18, 16, 15, 11, 5, 4: normalization: natural language for numbers and time
-- 70, 66, 63, 62, 21, 18, 15: support arithmetic, in <n><T>, with <op=and> etc. 
+- 70, 66, 63, 62, 21, 18, 15: support arithmetic, in <n><T>, with <op=and> etc.
 - 27, 26, 13: default, e.g. tonight, tomorrow at 11 -> at 11am, at midnight etc
 - 55, 52, 25, 2: causality, before, after, ago, from now, <bar> ops
 - 32: ranges
 - fix decimal number parsing
 
+0.3.0 / 2016-03-02
+==================
+
+  * update the readme
+  * update dist
+  * remove map
+  * fix travis. include only the lodash methods that we need. minor tweaks to be more consistent with the rest of the project.
+  * update lodash to find the latest available
+  * remove template string for legacy support
+  * remove template string for legacy support
+  * natural language normalization, fixes #66, 64, 28, 16, 15, 11, 4
+  * normalize string at parser using norm.js; add lodash as dep
+  * add issues under work
+  * fix npm i warning by adding MIT license field
 
 0.2.2 / 2016-01-25
 ==================
