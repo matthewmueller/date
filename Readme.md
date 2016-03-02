@@ -2,17 +2,13 @@
 
 Date is an english language date parser for node.js and the browser. For examples and demos, see: [http://matthewmueller.github.io/date/](http://matthewmueller.github.io/date/)
 
+**Update:** date.js now has much better NLP support thanks to [@kengz](https://github.com/kengz)
+
 ## Installation
 
-### On the server (node.js):
+### On the server or in the browser:
 
     npm install date.js
-
-### In the browser:
-
-#### Using component:
-
-    component install matthewmueller/date
 
 #### Standalone:
 
@@ -43,9 +39,29 @@ date('2 weeks from wednesday')
 date('tomorrow night at 9')
 date('tomorrow afternoon')
 date('this morning at 9')
+date('at 12:30pm')
+date('tomorrow at 9 in the morning')
 date('2 years from yesterday at 5pm')
 date('last month')
+date('2nd of January')
+date('1st of March'
+date('1 st of March'
+date('31st of September 4:00am'
+date('1st of January 4:00am'
+date('9th of December 4:00am'
 date('tomorrow afternoon at 4:30pm 1 month from now')
+date('10 seconds ago')
+date('1 minute ago')
+date('2 hours ago')
+date('5 weeks ago')
+date('2 months ago')
+date('1 year ago')
+date('an hour later')
+date('2w from wednesday')
+date('2nd day of January')
+date('two hours later')
+date('a fortnight from wednesday')
+date('a minute ago')
 
 date('at 12:30')
 date('at 12.30')
@@ -69,18 +85,24 @@ To run the tests, you'll need node.js:
 ## Contributors
 
 ```
-project  : date
-repo age : 4 months
-active   : 20 days
-commits  : 50
-files    : 13
-authors  :
-  25  Matt Mueller            50.0%
-  10  Bulkan Evcimen          20.0%
-   9  Matthew Mueller         18.0%
-   3  Eero Norri              6.0%
-   2  thomas                  4.0%
-   1  Jimmy Gaussen           2.0%
+ project  : date
+ repo age : 2 years, 10 months
+ active   : 39 days
+ commits  : 87
+ files    : 17
+ authors  :
+    27  Matt Mueller       31.0%
+    12  Bulkan Evcimen     13.8%
+     8  kengz              9.2%
+     3  Eero Norri         3.4%
+     2  thomas             2.3%
+     2  Patrick Stadler    2.3%
+     1  Christopher Blum   1.1%
+     1  Federico Rampazzo  1.1%
+     1  Timothy Cyrus      1.1%
+     1  chencheng          1.1%
+     1  HipsterBrown       1.1%
+     1  Jimmy Gaussen      1.1%
 ```
 
 ## License
