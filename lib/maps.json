@@ -56,7 +56,7 @@
   },
   "T": {
     "t:,dt:=3h": ["later", "soon"],
-    "t:1d,dt:": ["st", "nd", "rd", "th"],
+    "t:=1d,dt:": ["st", "nd", "rd", "th"],
     "t:,dt:14d": ["fortnight"],
     "t:=0h=0m=0s1mer,dt:": ["pm", "p.m", "p.m.", "noon"],
     "t:=9h=0m=0s,dt:1d": ["tmr", "tomorrow"],
@@ -68,6 +68,18 @@
     "t:=8h=0m=0s0mer,dt:": ["morning"],
     "t:=9h=0m=0s1mer,dt:": ["tonight", "night"],
     "t:=0h=0m=0s0mer,dt:1d": ["midnight"],
+    "t:1M=1d,dt:": ["january", "jan"],
+    "t:2M=1d,dt:": ["february", "feb"],
+    "t:3M=1d,dt:": ["march", "mar"],
+    "t:4M=1d,dt:": ["april", "apr"],
+    "t:5M=1d,dt:": ["may"],
+    "t:6M=1d,dt:": ["june", "jun"],
+    "t:7M=1d,dt:": ["july", "jul"],
+    "t:8M=1d,dt:": ["august", "aug"],
+    "t:9M=1d,dt:": ["september", "sept", "sep"],
+    "t:10M=1d,dt:": ["october", "oct"],
+    "t:11M=1d,dt:": ["november", "nov"],
+    "t:12M=1d,dt:": ["december", "dec"],
     "t:12M25d,dt:": ["christmas"]
   },
   "f": {
