@@ -5,18 +5,16 @@
     "times": ["times", "multiply"],
     "divide": ["divide"]
   },
-  "c": {
-    "c": ["every", "per", "repeat"]
-  },
-  "r": {
-    "to": ["to", "thru", "through", "til", "till", "until", "-", "~"]
+  "o": {
+    "plus": ["at", "on", "in", "past", "late", "after", "next", "from", "start", "starting", "since"],
+    "minus": ["minus", "subtract", "ago", "before"]
   },
   "n": {
     "0.25": ["quarter"],
-    "0.5": ["half", "1/2", "half a", "half an"],
+    "0.5": ["half", "1/2", "half an"],
     "0": ["zero"],
     "1": ["one", "a", "an", "first"],
-    "2": ["two"],
+    "2": ["two", "second"],
     "3": ["three", "third"],
     "4": ["four", "fourth"],
     "5": ["five", "fifth"],
@@ -46,20 +44,28 @@
     "1000": ["thousand", "thousands", "thousandth", "k", "K"]
   },
   "t": {
-    "th": ["st", "nd", "rd", "th", "st day", "nd day", "rd day", "th day"],
-    "2 week": ["fortnight", "next fortnight", "a fortnight"]
+    "d": ["st", "nd", "rd", "th"]
   },
   "dt": {
-    "ms": ["ms", "millisecond", "milliseconds"],
-    "second": ["s", "sec", "secs", "second", "seconds"],
-    "minute": ["m", "min", "mins", "minute", "minutes"],
-    "hour": ["h", "hr", "hrs", "hour", "hours"],
-    "day": ["d", "day", "days", "dai"],
-    "week": ["w", "wk", "wks", "week", "weeks"],
-    "month": ["M", "MM", "mo", "moon", "moons", "month", "months"],
-    "year": ["y", "yr", "yrs", "year", "years"],
-    "tomorrow": ["tmr", "tom", "tomorrow"],
-    "yesterday": ["ytd", "yesterday"]
+    "s": ["s", "sec", "secs", "second", "seconds"],
+    "m": ["m", "min", "mins", "minute", "minutes"],
+    "h": ["h", "hr", "hrs", "hour", "hours"],
+    "d": ["d", "day", "days", "dai"],
+    "w": ["w", "wk", "wks", "week", "weeks"],
+    "M": ["M", "mo", "moon", "moons", "month", "months"],
+    "y": ["y", "yr", "yrs", "year", "years"]
+  },
+  "T": {
+    "t:,dt:=3h": ["later", "soon"],
+    "t:=0h=0m=0s1mer,dt:": ["pm", "p.m", "p.m.", "noon"],
+    "t:=9h=0m=0s,dt:1d": ["tmr", "tomorrow"],
+    "t:=2h=0m=0s1mer,dt:": ["afternoon", "today"],
+    "t:=6h=0m=0s0mer,dt:": ["dawn"],
+    "t:=7h=0m=0s0mer,dt:": ["am", "a.m", "a.m."],
+    "t:=7h=0m=0s1mer,dt:": ["evening"],
+    "t:=9h=0m=0s0mer,dt:": ["morning"],
+    "t:=9h=0m=0s1mer,dt:": ["tonight", "night"],
+    "t:12M25d,dt:": ["christmas"]
   },
   "f": {
     "1": ["once"],
