@@ -7,7 +7,7 @@
   },
   "o": {
     "plus": ["at", "on", "in", "past", "late", "after", "next", "from", "start", "starting", "since", "coming"],
-    "minus": ["minus", "subtract", "ago", "before"]
+    "minus": ["minus", "subtract", "ago", "before", "last"]
   },
   "n": {
     "0.25": ["quarter"],
