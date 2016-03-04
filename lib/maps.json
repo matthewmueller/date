@@ -6,7 +6,7 @@
     "divide": ["divide"]
   },
   "o": {
-    "plus": ["at", "on", "in", "past", "late", "after", "next", "from", "start", "starting", "since"],
+    "plus": ["at", "on", "in", "past", "late", "after", "next", "from", "start", "starting", "since", "coming"],
     "minus": ["minus", "subtract", "ago", "before"]
   },
   "n": {
@@ -44,7 +44,6 @@
     "1000": ["thousand", "thousands", "thousandth", "k", "K"]
   },
   "t": {
-    "d": ["st", "nd", "rd", "th"]
   },
   "dt": {
     "s": ["s", "sec", "secs", "second", "seconds"],
@@ -57,6 +56,8 @@
   },
   "T": {
     "t:,dt:=3h": ["later", "soon"],
+    "t:1d,dt:": ["st", "nd", "rd", "th"],
+    "t:,dt:14d": ["fortnight"],
     "t:=0h=0m=0s1mer,dt:": ["pm", "p.m", "p.m.", "noon"],
     "t:=9h=0m=0s,dt:1d": ["tmr", "tomorrow"],
     "t:=9h=0m=0s,dt:-1d": ["ytd", "yesterday"],
