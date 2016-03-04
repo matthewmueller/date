@@ -12,7 +12,7 @@
   "n": {
     "0.25": ["quarter"],
     "0.5": ["half", "1/2", "half an"],
-    "0": ["zero"],
+    "0": ["zero", "this"],
     "1": ["one", "a", "an", "first"],
     "2": ["two", "second"],
     "3": ["three", "third"],
@@ -66,6 +66,7 @@
     "t:=7h=0m=0s1mer,dt:": ["evening"],
     "t:=9h=0m=0s0mer,dt:": ["morning"],
     "t:=9h=0m=0s1mer,dt:": ["tonight", "night"],
+    "t:=0h=0m=0s0mer,dt:1d": ["midnight"],
     "t:12M25d,dt:": ["christmas"]
   },
   "f": {
