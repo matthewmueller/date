@@ -65,7 +65,7 @@
     "t:=6h=0m=0s0mer,dt:": ["dawn"],
     "t:=7h=0m=0s0mer,dt:": ["am", "a.m", "a.m."],
     "t:=7h=0m=0s1mer,dt:": ["evening"],
-    "t:=9h=0m=0s0mer,dt:": ["morning"],
+    "t:=8h=0m=0s0mer,dt:": ["morning"],
     "t:=9h=0m=0s1mer,dt:": ["tonight", "night"],
     "t:=0h=0m=0s0mer,dt:1d": ["midnight"],
     "t:12M25d,dt:": ["christmas"]
