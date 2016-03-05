@@ -6,7 +6,7 @@
     "divide": ["divide"]
   },
   "o": {
-    "plus": ["at", "on", "in", "past", "late", "after", "next", "from", "start", "starting", "since", "coming"],
+    "plus": ["at", "on", "in", "past", "late", "later", "after", "next", "from", "start", "starting", "since", "coming"],
     "minus": ["minus", "subtract", "ago", "before", "last"]
   },
   "n": {
@@ -46,13 +46,13 @@
   "t": {
   },
   "dt": {
-    "s": ["s", "sec", "secs", "second", "seconds"],
-    "m": ["m", "min", "mins", "minute", "minutes"],
-    "h": ["h", "hr", "hrs", "hour", "hours"],
-    "d": ["d", "day", "days", "dai"],
-    "w": ["w", "wk", "wks", "week", "weeks"],
-    "M": ["M", "mo", "moon", "moons", "month", "months", "monthes"],
-    "y": ["y", "yr", "yrs", "year", "years"]
+    "s": ["second", "seconds", "s", "sec", "secs"],
+    "m": ["minute", "minutes", "m", "min", "mins"],
+    "h": ["hour", "hours", "h", "hr", "hrs"],
+    "d": ["day", "days", "d", "dai"],
+    "w": ["week", "weeks", "w", "wk", "wks"],
+    "M": ["month", "months", "monthes", "M", "mo", "moon", "moons"],
+    "y": ["year", "years", "y", "yr", "yrs"]
   },
   "T": {
     "t:,dt:=3h": ["later", "soon"],
