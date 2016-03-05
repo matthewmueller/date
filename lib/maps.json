@@ -51,7 +51,7 @@
     "h": ["h", "hr", "hrs", "hour", "hours"],
     "d": ["d", "day", "days", "dai"],
     "w": ["w", "wk", "wks", "week", "weeks"],
-    "M": ["M", "mo", "moon", "moons", "month", "months"],
+    "M": ["M", "mo", "moon", "moons", "month", "months", "monthes"],
     "y": ["y", "yr", "yrs", "year", "years"]
   },
   "T": {
