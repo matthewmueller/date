@@ -578,6 +578,12 @@ describe('year', function() {
     assert('5/13/11' == d(date));
   })
 
+  it('2 years ago--.', function() {
+    var date = parse('2 years ago--.', mon);
+    assert('1:30:00' == t(date));
+    assert('5/13/11' == d(date));
+  })
+
   it('2 years ago tomorrow', function() {
     var date = parse('2 years ago tomorrow', mon);
     assert('1:30:00' == t(date));
@@ -642,11 +648,11 @@ describe('times', function() {
  */
 
 describe('other inputs', function () {
-  it('yesterday, 2 years ago--.', function() {
-    var date = parse('yesterday, 2 years ago--.', mon);
-    assert('1:30:00' == t(date));
-    assert('5/12/11' == d(date))
-  });
+  // it('yesterday, 2 years ago--.', function() {
+  //   var date = parse('yesterday, 2 years ago--.', mon);
+  //   assert('1:30:00' == t(date));
+  //   assert('5/12/11' == d(date))
+  // });
 
   it('invalid', function() {
     var date = parse('invalid', mon);
