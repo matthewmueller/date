@@ -857,6 +857,61 @@ describe('support natural language, single-tokens without arithmetics (fixes: #6
 
 
 /**
+ * Suppport arithmetics
+ */
+
+describe('support timeline arithmetics (fixes: #66, 64, 28, 16, 15, 11, 4)', function (){
+
+  // !isn't an elegant fix, utilizes util.removeTnPlus for defaulting
+  it('#70: 5 days and 2 hours', function () {
+    var date = parse('5 days and 2 hours', mon);
+    console.log('date', date)
+    assert('3:30:00' == t(date));
+    assert('5/18/13' == d(date));
+  });
+
+  it('#62: 5 days 2 hours', function () {
+    var date = parse('5 days 2 hours', mon);
+    console.log('date', date)
+    assert('3:30:00' == t(date));
+    assert('5/18/13' == d(date));
+  });
+  
+  it('#62: 2 hours 30 mins', function () {
+    var date = parse('2 hours 30 mins', mon);
+    console.log('date', date)
+    assert('4:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+  
+  // !pending, need datejs to carry decimals
+  // it('#66: half an hour later', function () {
+  //   var date = parse('half an hour later', mon);
+  //   console.log('date', date)
+  //   assert('2:00:00' == t(date));
+  //   assert('5/13/13' == d(date));
+  // });
+  // it('compatible arithmetics: an hour and half later', function () {
+  //   var date = parse('an hour and half later', mon);
+  //   console.log('date', date)
+  //   assert('3:00:00' == t(date));
+  //   assert('5/13/13' == d(date));
+  // });
+
+  // it('#64: this year', function () {
+  //   var date = parse('this year', mon);
+  //   console.log('date', date)
+  // });
+
+  // it('#64: this week', function () {
+  //   var date = parse('this week', mon);
+  //   console.log('date', date)
+  // });
+
+});
+
+
+/**
  * Time helper function
  */
 

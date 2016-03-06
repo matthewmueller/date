@@ -1,13 +1,13 @@
 {
   "op": {
-    "plus": ["plus", "+", "add", "and"],
+    "plus": ["and", "plus", "+", "add"],
     "minus": ["minus", "subtract"],
     "times": ["times", "multiply"],
     "divide": ["divide"]
   },
   "o": {
     "plus": ["at", "on", "in", "past", "late", "later", "after", "next", "from", "start", "starting", "since", "coming"],
-    "minus": ["minus", "subtract", "ago", "before", "last"]
+    "minus": ["last", "minus", "subtract", "ago", "before"]
   },
   "n": {
     "0.25": ["quarter"],
