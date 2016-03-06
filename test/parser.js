@@ -932,6 +932,33 @@ describe('support timeline arithmetics (fixes: #70, 62, 21)', function() {
 
 
 /**
+ * Suppport arithmetics
+ */
+
+describe('Time extraction from arbitrary sentence', function() {
+
+  it('time extraction: remind me about laundry in 2 hours 30 mins please', function() {
+    var date = parse('remind me about laundry in 2 hours 30 mins please', mon);
+    assert('4:00:00' == t(date));
+    assert('5/13/13' == d(date));
+  });
+
+  it('Normal form: May 13, 2011 01:30:00', function() {
+    var date = parse('May 13, 2011 01:30:00', mon);
+    assert('1:30:00' == t(date));
+    assert('5/13/11' == d(date));
+  });
+
+  it('Normal form: 13 May 2011 01:30 UTC', function() {
+    var date = parse('13 May 2011 01:30 UTC', mon);
+    assert('21:30:00' == t(date));
+    assert('5/12/11' == d(date));
+  });
+
+})
+
+
+/**
  * Time helper function
  */
 
