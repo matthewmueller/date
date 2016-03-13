@@ -4,14 +4,7 @@
   "description": "dates for humans",
   "main": "index.js",
   "dependencies": {
-    "debug": "~0.7.2",
-    "lodash.filter": "^4.2.0",
-    "lodash.findkey": "^4.2.0",
-    "lodash.foreach": "^4.1.0",
-    "lodash.includes": "^4.1.0",
-    "lodash.isempty": "^4.1.2",
-    "lodash.partition": "^4.2.0",
-    "lodash.trim": "^4.2.0"
+    "debug": "~0.7.2"
   },
   "devDependencies": {
     "better-assert": "~1.0.0",
@@ -21,6 +14,11 @@
     "test": "make test"
   },
   "keywords": [
+    "nlp",
+    "natural language processing",
+    "time",
+    "parser",
+    "cfg",
     "dates",
     "humans",
     "parsing"

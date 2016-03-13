@@ -1,22 +1,20 @@
 {
   "op": {
-    "plus": ["plus", "+", "add", "and"],
+    "plus": ["and", "plus", "+", "add", "on"],
     "minus": ["minus", "subtract"],
     "times": ["times", "multiply"],
     "divide": ["divide"]
   },
-  "c": {
-    "c": ["every", "per", "repeat"]
-  },
-  "r": {
-    "to": ["to", "thru", "through", "til", "till", "until", "-", "~"]
+  "o": {
+    "plus": ["at", "in", "past", "late", "later", "after", "next", "from", "start", "starting", "since", "coming"],
+    "minus": ["last", "minus", "subtract", "ago", "before", "from"]
   },
   "n": {
     "0.25": ["quarter"],
-    "0.5": ["half", "1/2", "half a", "half an"],
+    "0.5": ["half", "1/2", "half an"],
     "0": ["zero"],
     "1": ["one", "a", "an", "first"],
-    "2": ["two"],
+    "2": ["two", "second"],
     "3": ["three", "third"],
     "4": ["four", "fourth"],
     "5": ["five", "fifth"],
@@ -46,20 +44,52 @@
     "1000": ["thousand", "thousands", "thousandth", "k", "K"]
   },
   "t": {
-    "th": ["st", "nd", "rd", "th", "st day", "nd day", "rd day", "th day"],
-    "2 week": ["fortnight", "next fortnight", "a fortnight"]
   },
   "dt": {
-    "ms": ["ms", "millisecond", "milliseconds"],
-    "second": ["s", "sec", "secs", "second", "seconds"],
-    "minute": ["m", "min", "mins", "minute", "minutes"],
-    "hour": ["h", "hr", "hrs", "hour", "hours"],
-    "day": ["d", "day", "days", "dai"],
-    "week": ["w", "wk", "wks", "week", "weeks"],
-    "month": ["M", "MM", "mo", "moon", "moons", "month", "months"],
-    "year": ["y", "yr", "yrs", "year", "years"],
-    "tomorrow": ["tmr", "tom", "tomorrow"],
-    "yesterday": ["ytd", "yesterday"]
+    "s": ["second", "seconds", "s", "sec", "secs"],
+    "m": ["minute", "minutes", "m", "min", "mins"],
+    "h": ["hour", "hours", "h", "hr", "hrs"],
+    "d": ["day", "days", "d", "dai"],
+    "w": ["week", "weeks", "w", "wk", "wks"],
+    "M": ["month", "months", "monthes", "M", "mo", "moon", "moons"],
+    "y": ["year", "years", "y", "yr", "yrs"]
+  },
+  "T": {
+    "t:,dt:=3h": ["later", "soon"],
+    "t:=1d,dt:": ["st", "nd", "rd", "th", "st day", "nd day", "rd day", "th day"],
+    "t:,dt:1w": ["st week", "nd week", "rd week", "th week"],
+    "t:,dt:14d": ["day", "fortnight"],
+    "t:=0h=0m=0s1mer,dt:": ["pm", "p.m", "p.m.", "noon"],
+    "t:,dt:1d": ["tomorrow", "tmr"],
+    "t:,dt:-1d": ["yesterday", "ytd"],
+    "t:,0dt:": ["today"],
+    "t:=2h=0m=0s1mer,dt:": ["afternoon"],
+    "t:=6h=0m=0s0mer,dt:": ["dawn"],
+    "t:=7h=0m=0s0mer,dt:": ["am", "a.m", "a.m."],
+    "t:=7h=0m=0s1mer,dt:": ["evening"],
+    "t:=8h=0m=0s0mer,dt:": ["morning"],
+    "t:=9h=0m=0s1mer,dt:": ["tonight", "night"],
+    "t:=0h=0m=0s0mer,dt:1d": ["midnight"],
+    "t:,dt:=0w0wd": ["sunday", "sun"],
+    "t:,dt:=0w1wd": ["monday", "mon"],
+    "t:,dt:=0w2wd": ["tuesday", "tue", "tues"],
+    "t:,dt:=0w3wd": ["wednesday", "wed"],
+    "t:,dt:=0w4wd": ["thursday", "thu", "thur", "thurs"],
+    "t:,dt:=0w5wd": ["friday", "fri"],
+    "t:,dt:=0w6wd": ["saturday", "sat"],
+    "t:1M=1d,dt:": ["january", "jan"],
+    "t:2M=1d,dt:": ["february", "feb"],
+    "t:3M=1d,dt:": ["march", "mar"],
+    "t:4M=1d,dt:": ["april", "apr"],
+    "t:5M=1d,dt:": ["may"],
+    "t:6M=1d,dt:": ["june", "jun"],
+    "t:7M=1d,dt:": ["july", "jul"],
+    "t:8M=1d,dt:": ["august", "aug"],
+    "t:9M=1d,dt:": ["september", "sept", "sep"],
+    "t:10M=1d,dt:": ["october", "oct"],
+    "t:11M=1d,dt:": ["november", "nov"],
+    "t:12M=1d,dt:": ["december", "dec"],
+    "t:12M25d,dt:": ["christmas"]
   },
   "f": {
     "1": ["once"],
