@@ -44,11 +44,11 @@ date('tomorrow at 9 in the morning')
 date('2 years from yesterday at 5pm')
 date('last month')
 date('2nd of January')
-date('1st of March'
-date('1 st of March'
-date('31st of September 4:00am'
-date('1st of January 4:00am'
-date('9th of December 4:00am'
+date('1st of March')
+date('1 st of March')
+date('31st of September 4:00am')
+date('1st of January 4:00am')
+date('9th of December 4:00am')
 date('tomorrow afternoon at 4:30pm 1 month from now')
 date('10 seconds ago')
 date('1 minute ago')
