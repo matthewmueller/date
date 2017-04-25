@@ -4,6 +4,14 @@ Date is an english language date parser for node.js and the browser. For example
 
 **Update:** date.js now has much better NLP support thanks to [@kengz](https://github.com/kengz)
 
+## Job Board
+
+Looking for a career upgrade? Check out the available Node.js & Javascript positions at these innovative companies.
+
+<a href="https://astro.netlify.com/automattic"><img src="https://astro.netlify.com/static/automattic.png"></a>
+<a href="https://astro.netlify.com/segment"><img src="https://astro.netlify.com/static/segment.png"></a>
+<a href="https://astro.netlify.com/auth0"><img src="https://astro.netlify.com/static/auth0.png"/></a>
+
 ## Installation
 
 ### On the server or in the browser:
