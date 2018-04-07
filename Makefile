@@ -1,21 +1,12 @@
 test:
 	@./node_modules/.bin/mocha -R spec
 
-build: components index.js
-	@component build --dev
+build: index.js
+	@./node_modules/.bin/browserify --bare --standalone date -o dist/date.js index.js
 
-components: component.json
-	@component install --dev
+dist: build minify
 
-clean:
-	rm -fr build components template.js
-
-dist: components dist-build dist-minify
-
-dist-build:
-	@component build -s date -o dist -n date
-
-dist-minify: dist/date.js
+minify: dist/date.js
 	@curl -s \
 		-d compilation_level=SIMPLE_OPTIMIZATIONS \
 		-d output_format=text \
@@ -25,4 +16,4 @@ dist-minify: dist/date.js
 		> $<.tmp
 	@mv $<.tmp dist/date.min.js
 
-.PHONY: test clean
+.PHONY: test clean minify
