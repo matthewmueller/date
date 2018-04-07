@@ -1,10 +1,8 @@
-### Issues currently under work:
-- 71: "3.99" is interpreted as 4.39am: justified
-- 70, 66, 63, 18: full CFG and unit-specific arithmetics
-- 27, 26, 13: default, e.g. tonight, tomorrow at 11 -> at 11am, at midnight etc
-- 55, 52, 25, 2: causality, before, after, ago, from now, <bar> ops
-- 32: ranges
-- CFG pending takeover: month-specific carry into days, defaults (tomorrow = 9am), leap year
+
+0.3.3 / 2018-04-07
+==================
+
+  * fix the distribution and switch to browserify
 
 0.3.1 / 2016-03-02
 ==================
