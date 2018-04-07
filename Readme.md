@@ -10,6 +10,13 @@ Date is an english language date parser for node.js and the browser. For example
 
     npm install date.js
 
+#### Standalone:
+
+* development: [date.js](https://raw.github.com/MatthewMueller/date/master/dist/date.js)
+* minified: [date.min.js](https://raw.github.com/MatthewMueller/date/master/dist/date.min.js)
+
+> Standalone is also AMD-compatible
+
 ## Examples
 
 ```js
