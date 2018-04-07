@@ -4,26 +4,11 @@ Date is an english language date parser for node.js and the browser. For example
 
 **Update:** date.js now has much better NLP support thanks to [@kengz](https://github.com/kengz)
 
-## Job Board
-
-Looking for a career upgrade? Check out the available Node.js & Javascript positions at these innovative companies.
-
-<a href="https://astro.netlify.com/automattic"><img src="https://astro.netlify.com/static/automattic.png"></a>
-<a href="https://astro.netlify.com/segment"><img src="https://astro.netlify.com/static/segment.png"></a>
-<a href="https://astro.netlify.com/auth0"><img src="https://astro.netlify.com/static/auth0.png"/></a>
-
 ## Installation
 
 ### On the server or in the browser:
 
     npm install date.js
-
-#### Standalone:
-
-* development: [date.js](https://raw.github.com/MatthewMueller/date/master/dist/date.js)
-* minified: [date.min.js](https://raw.github.com/MatthewMueller/date/master/dist/date.min.js)
-
-> Standalone is also AMD-compatible
 
 ## Examples
 
@@ -117,7 +102,7 @@ To run the tests, you'll need node.js:
 
 (The MIT License)
 
-Copyright (c) 2013 Matt Mueller <mattmuelle@gmail.com>
+Copyright (c) 2013 Matt Mueller <mailto:mattmuelle@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
