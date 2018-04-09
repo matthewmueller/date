@@ -2,7 +2,8 @@ test:
 	@./node_modules/.bin/mocha -R spec
 
 build: index.js
-	@./node_modules/.bin/browserify --bare --standalone date -o dist/date.js index.js
+	@./node_modules/.bin/browserify --bare --standalone date -o dist/date.js index.js \
+		&& ./node_modules/.bin/uglifyjs dist/date.js > dist/date.min.js
 
 dist: build minify
 
