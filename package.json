@@ -9,7 +9,8 @@
   "devDependencies": {
     "better-assert": "~1.0.0",
     "browserify": "^16.1.1",
-    "mocha": "~4.0.1"
+    "mocha": "~4.0.1",
+    "uglify-js": "^3.3.20"
   },
   "scripts": {
     "test": "make test"
