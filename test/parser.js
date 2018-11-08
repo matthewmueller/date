@@ -683,6 +683,12 @@ describe('bug fixes', function() {
     assert('9:00:00' == t(date));
     assert('5/14/13' == d(date));
   })
+
+  it('2017-04-30 (correct carry up)', function () {
+      var date = parse('2017-04-30', mon);
+      assert('4/30/17' == d(date));
+  });
+
 });
 
 /**
