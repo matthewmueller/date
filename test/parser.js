@@ -957,7 +957,15 @@ describe('Time extraction from arbitrary sentence', function() {
   });
 
 })
-
+/* 
+ * Today should be able to be in the past
+ */
+describe("today issue", function() {
+  it("test today", () => {
+    const date = parse("today at 1am");
+    assert(d(date) == d(new Date()));
+  });
+});
 
 /**
  * Time helper function
