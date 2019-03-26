@@ -743,6 +743,24 @@ describe('months (fixes: #10)', function() {
     assert('4:00:00' == t(date));
     assert('12/9/13' == d(date));
   })
+
+  it('1st day of this month at midnight', function () {
+    var date = parse('1st day of this month at midnight', after);
+    assert('0:00:00' == t(date));
+    assert('1/5/13' == d(date));
+  })
+
+  it('2nd day of last month at noon', function () {
+    var date = parse('2nd day of last month at noon', after);
+    assert('12:00:00' == t(date));
+    assert('02/4/13' == d(date));
+  })
+
+  it('3rd day of next month', function () {
+    var date = parse('3rd day of next month', after);
+    assert('13:30:00' == t(date));
+    assert('03/6/13' == d(date));
+  })
 });
 
 /**
