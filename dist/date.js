@@ -1255,7 +1255,7 @@ function parser (str, offset) {
   // console.log(prepro)
   // reset the str to prepro str
   str = prepro.str
-  // if proprocessed doesn't leave any str to be processed (non-date-time) format, check normals
+  // if preprocessed doesn't leave any str to be processed (non-date-time) format, check normals
   if (!str) {
     if (prepro.normals.length) {
       // if there's normal date parsed already,
